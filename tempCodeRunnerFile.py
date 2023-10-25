@@ -1,2 +1,1 @@
-
-        # splitter.addWidget(self.ui.graphicsView_
+max_frequency
