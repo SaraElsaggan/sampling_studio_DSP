@@ -42,34 +42,11 @@ background-color: #676767;
 </string>
    </property>
    <layout class="QGridLayout" name="gridLayout_3">
-    <item row="1" column="0">
-     <widget class="QLabel" name="label_2">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QLabel {
-    color: white;
-}</string>
-      </property>
-      <property name="text">
-       <string>Reconstructed signal</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
     <item row="2" column="0">
      <widget class="QLabel" name="label_3">
       <property name="font">
        <font>
         <pointsize>12</pointsize>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -86,21 +63,26 @@ background-color: #676767;
       </property>
      </widget>
     </item>
-    <item row="0" column="2">
-     <spacer name="horizontalSpacer_2">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_2">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <bold>true</bold>
+       </font>
       </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Fixed</enum>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+    color: white;
+}</string>
       </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>10</width>
-        <height>20</height>
-       </size>
+      <property name="text">
+       <string>Reconstructed signal</string>
       </property>
-     </spacer>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
     </item>
     <item row="0" column="1" rowspan="3">
      <layout class="QVBoxLayout" name="verticalLayout">
@@ -172,28 +154,11 @@ QPlotGraph:hover {
       </item>
      </layout>
     </item>
-    <item row="0" column="4">
-     <spacer name="horizontalSpacer_3">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Fixed</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
     <item row="0" column="0">
      <widget class="QLabel" name="label">
       <property name="font">
        <font>
         <pointsize>12</pointsize>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -213,7 +178,7 @@ QPlotGraph:hover {
     <item row="0" column="3" rowspan="3">
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="10" column="3" colspan="2">
-       <widget class="QPushButton" name="pushButton_4">
+       <widget class="QPushButton" name="btn_sample">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -223,7 +188,6 @@ QPlotGraph:hover {
         <property name="font">
          <font>
           <pointsize>-1</pointsize>
-          <weight>75</weight>
           <bold>true</bold>
           <underline>false</underline>
           <strikeout>false</strikeout>
@@ -244,7 +208,6 @@ margin-right:100%;</string>
         <property name="font">
          <font>
           <pointsize>10</pointsize>
-          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -272,11 +235,10 @@ margin-right:100%;</string>
       <item row="0" column="0">
        <layout class="QGridLayout" name="gridLayout">
         <item row="1" column="0">
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="btn_import">
           <property name="font">
            <font>
             <pointsize>-1</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
             <underline>false</underline>
             <strikeout>false</strikeout>
@@ -295,7 +257,6 @@ margin-right:100%;</string>
           <property name="font">
            <font>
             <pointsize>10</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -338,7 +299,6 @@ margin-right:100%;</string>
        <widget class="QLabel" name="label_10">
         <property name="font">
          <font>
-          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -365,7 +325,6 @@ border-radius:5px;</string>
        <widget class="QGroupBox" name="groupBox_2">
         <property name="font">
          <font>
-          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -399,11 +358,10 @@ QLabel {
         </property>
         <layout class="QGridLayout" name="gridLayout_5">
          <item row="2" column="2">
-          <widget class="QPushButton" name="pushButton_3">
+          <widget class="QPushButton" name="btn_remove">
            <property name="font">
             <font>
              <pointsize>-1</pointsize>
-             <weight>75</weight>
              <bold>true</bold>
              <underline>false</underline>
              <strikeout>false</strikeout>
@@ -441,7 +399,6 @@ QLabel {
           <property name="font">
            <font>
             <pointsize>11</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -493,7 +450,6 @@ QLabel {
         <property name="font">
          <font>
           <pointsize>10</pointsize>
-          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -532,7 +488,6 @@ QLabel {
            <property name="font">
             <font>
              <pointsize>8</pointsize>
-             <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -546,7 +501,6 @@ QLabel {
            <property name="font">
             <font>
              <pointsize>8</pointsize>
-             <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -563,7 +517,6 @@ QLabel {
            <property name="font">
             <font>
              <pointsize>8</pointsize>
-             <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -582,11 +535,10 @@ QLabel {
           <widget class="QSpinBox" name="spinBox_2"/>
          </item>
          <item row="4" column="1">
-          <widget class="QPushButton" name="pushButton_2">
+          <widget class="QPushButton" name="btn_add_comp">
            <property name="font">
             <font>
              <pointsize>-1</pointsize>
-             <weight>75</weight>
              <bold>true</bold>
              <underline>false</underline>
              <strikeout>false</strikeout>
@@ -613,6 +565,26 @@ color: black;
 background-color:rgb(25, 117, 255);
 </string>
         </property>
+        <item>
+         <property name="text">
+          <string>choose example</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>example 1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>example 2</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>example 3</string>
+         </property>
+        </item>
        </widget>
       </item>
       <item row="3" column="0">
@@ -626,7 +598,6 @@ background-color:rgb(25, 117, 255);
         <property name="font">
          <font>
           <pointsize>10</pointsize>
-          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -697,7 +668,46 @@ QSlider::groove {
         </property>
        </widget>
       </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="checkBox">
+        <property name="text">
+         <string>show examples</string>
+        </property>
+       </widget>
+      </item>
      </layout>
+    </item>
+    <item row="0" column="2">
+     <spacer name="horizontalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>10</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="0" column="4">
+     <spacer name="horizontalSpacer_3">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
     </item>
    </layout>
   </widget>
@@ -707,7 +717,7 @@ QSlider::groove {
      <x>0</x>
      <y>0</y>
      <width>1179</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

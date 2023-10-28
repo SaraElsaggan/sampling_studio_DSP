@@ -1,1 +1,1 @@
-max_frequency
+QFilenoise_dialog
