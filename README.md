@@ -20,7 +20,7 @@ This is reconstruction of imported signal.
 ![image](imgs/manually%20generated%20signal.jpg)
 This is reconstruction of manually generated sinusoidal signal.
 
-###Demo
+### Demo
 [sampling studio_Demo](https://drive.google.com/drive/folders/1xjZrUHQhmwHQWkPRywZBKMdPzkAmK1cP?usp=sharing)
 
 ### Application Features
