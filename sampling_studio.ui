@@ -87,7 +87,7 @@ background-color: #676767;
     <item row="0" column="1" rowspan="3">
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="PlotWidget" name="graphicsView_2">
+       <widget class="PlotWidget" name="graph_orignal">
         <property name="styleSheet">
          <string notr="true"/>
         </property>
@@ -110,7 +110,7 @@ background-color: #676767;
        </spacer>
       </item>
       <item>
-       <widget class="PlotWidget" name="graphicsView">
+       <widget class="PlotWidget" name="graph_recons">
         <property name="styleSheet">
          <string notr="true">QPlotGraph {
   background-color: #3498db;
@@ -150,7 +150,7 @@ QPlotGraph:hover {
        </spacer>
       </item>
       <item>
-       <widget class="PlotWidget" name="graphicsView_3"/>
+       <widget class="PlotWidget" name="graph_error"/>
       </item>
      </layout>
     </item>
@@ -291,7 +291,7 @@ margin-right:100%;</string>
          </spacer>
         </item>
         <item row="2" column="0">
-         <widget class="QDial" name="dial"/>
+         <widget class="QDial" name="dial_noise"/>
         </item>
        </layout>
       </item>
@@ -314,7 +314,7 @@ margin-right:100%;</string>
        </widget>
       </item>
       <item row="7" column="3">
-       <widget class="QSpinBox" name="spinBox_4">
+       <widget class="QSpinBox" name="spin__samp_freq">
         <property name="styleSheet">
          <string notr="true">border: 2px solid  rgb(255, 170, 0);
 border-radius:5px;</string>
@@ -376,7 +376,7 @@ QLabel {
           </widget>
          </item>
          <item row="0" column="0" colspan="3">
-          <widget class="QListWidget" name="listWidget">
+          <widget class="QListWidget" name="list_comps">
            <item>
             <property name="text">
              <string>Signal_1</string>
@@ -526,13 +526,13 @@ QLabel {
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QSpinBox" name="spinBox_3"/>
+          <widget class="QSpinBox" name="spin_phase"/>
          </item>
          <item row="0" column="1">
-          <widget class="QSpinBox" name="spinBox"/>
+          <widget class="QSpinBox" name="spin_freq"/>
          </item>
          <item row="1" column="1">
-          <widget class="QSpinBox" name="spinBox_2"/>
+          <widget class="QSpinBox" name="spin_amp"/>
          </item>
          <item row="4" column="1">
           <widget class="QPushButton" name="btn_add_comp">
@@ -556,7 +556,7 @@ QLabel {
        </widget>
       </item>
       <item row="3" column="3">
-       <widget class="QComboBox" name="comboBox">
+       <widget class="QComboBox" name="comb_bx_examp">
         <property name="styleSheet">
          <string notr="true"> border: 1px solid #ccc;
 border-radius:5px;
@@ -669,7 +669,7 @@ QSlider::groove {
        </widget>
       </item>
       <item row="4" column="0">
-       <widget class="QCheckBox" name="checkBox">
+       <widget class="QCheckBox" name="chk_bx_examp">
         <property name="text">
          <string>show examples</string>
         </property>

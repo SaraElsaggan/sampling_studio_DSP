@@ -1,1 +1,1 @@
-QFilenoise_dialog
+spin__samp_freq
