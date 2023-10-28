@@ -54,7 +54,7 @@ class MyMainWindow(QMainWindow):
         self.ui.dial.setMaximum(10)
         self.ui.dial.valueChanged.connect(self.add_noise_try)
         self.ui.horizontalSlider.valueChanged.connect(self.input_freq_slider)
-        self.ui.spinBox_4.editingFinished.connect(self.input_freq_spin)
+        self.ui.pushButton_4.clicked.connect(self.input_freq_spin)
         self.ui.pushButton.clicked.connect(self.load_signal)
         self.ui.pushButton_2.clicked.connect(self.create_signal_component)
         self.ui.pushButton_3.clicked.connect(self.remove_component)
