@@ -5,7 +5,6 @@
 - [Demo](#Demo)
 - [Features](#features)
 - [Getting Started](#getting-started)
-- [Usage](#usage)
 ---
 
 ## Project Description
@@ -49,7 +48,7 @@ Follow these instructions to get the application up and running on your system.
    - Navigate to the project directory in your terminal and install the needed packages
 
 4. **Run the Application**:
-- run the main.py using your IDE (ex. visual studio)
+   - run the main.py using your IDE (ex. visual studio)
 
 
 
