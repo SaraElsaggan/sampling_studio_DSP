@@ -21,6 +21,7 @@ This is reconstruction of imported signal.
 This is reconstruction of manually generated sinusoidal signal.
 
 ###Demo
+[sampling studio_Demo](https://drive.google.com/drive/folders/1xjZrUHQhmwHQWkPRywZBKMdPzkAmK1cP?usp=sharing)
 
 ### Application Features
 The application boasts the following key features:
