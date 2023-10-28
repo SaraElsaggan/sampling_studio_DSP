@@ -48,16 +48,31 @@ class MyMainWindow(QMainWindow):
         self.isloaded= False
         
         self.ui.horizontalSlider.setMinimum(1)
-        self.ui.horizontalSlider.setMaximum(5)
+        self.ui.horizontalSlider.setMaximum(10)
         
         self.ui.dial.setMinimum(0)
-        self.ui.dial.setMaximum(5)
+        self.ui.dial.setMaximum(10)
         self.ui.dial.valueChanged.connect(self.add_noise_try)
-        self.ui.horizontalSlider.valueChanged.connect(self.sampling)
+        self.ui.horizontalSlider.valueChanged.connect(self.input_freq_slider)
+        self.ui.spinBox_4.editingFinished.connect(self.input_freq_spin)
         self.ui.pushButton.clicked.connect(self.load_signal)
         self.ui.pushButton_2.clicked.connect(self.create_signal_component)
         self.ui.pushButton_3.clicked.connect(self.remove_component)
+      
+    def input_freq_slider(self):
+        self.isslider = True
+        self.isspin = False
+        self.sampling()
+    
+    def input_freq_spin(self):
+        self.isslider = False
+        self.isspin = True
+        self.sampling()
+    
         
+    
+    
+          
         
     def load_signal(self):
         file_path  , _ = QFileDialog.getOpenFileName( self , "open file", "" ,"(*.csv) ")
@@ -135,7 +150,14 @@ class MyMainWindow(QMainWindow):
             max_y =  max(self.orignal_signal.getData()[1])
 
             self.ui.graphicsView_2.plotItem.vb.setLimits(xMin=min_x , xMax=max_x, yMin=min_y , yMax=max_y)
+    
+    def plot_difference_between_graphs(self):
         
+        self.ui.graphicsView_3.clear()
+        x_data_1, y_data_1 = self.ui.graphicsView_2.plotItem.curves[0].getData()
+        x_data_2, y_data_2 = self.ui.graphicsView.plotItem.curves[0].getData()
+        difference = np.array(y_data_1) - np.array(y_data_2)
+        self.ui.graphicsView_3.plot(x_data_1, difference, pen='r')    
     
     def sampling_(self):
         max_frequency = self.signals_components[0]["frequency"]
@@ -145,6 +167,7 @@ class MyMainWindow(QMainWindow):
 
         # sampling_frequency = 2  # 100 samples per second
         sampling_frequency = self.ui.horizontalSlider_4.value() * max_frequency  # 100 samples per second
+        print(self.ui.horizontalSlider_4.value() ) # 100 samples per second)
         # sampled_indices = np.arange(0, len(self.time), int(1 / (sampling_rate * (self.time[1] - self.time[0]))))
         # sampled_time = self.time[sampled_indices]
         # sampled_signal = signal[sampled_indices]
@@ -168,6 +191,7 @@ class MyMainWindow(QMainWindow):
 
         
         sampled_points = self.mixed_signal[::int(1 / (sampling_frequency * (self.time[1] - self.time[0])))]
+        
 
 # Plot the original signal
         # self.ui.graphicsView.plot(self.time, self.mixed_signal, pen='b', name="Original Signal")
@@ -255,17 +279,20 @@ class MyMainWindow(QMainWindow):
     
     def sampling(self):
         if self.ismixed:
-            max_frequency = self.signals_components[0]["frequency"]
-            for component in self.signals_components:
-                if component["frequency"] > max_frequency:
-                    max_frequency = component["frequency"]
-
+            if self.isslider:
+                max_frequency = self.signals_components[0]["frequency"]
+                for component in self.signals_components:
+                    if component["frequency"] > max_frequency:
+                        max_frequency = component["frequency"]
+                sampling_frequency = self.ui.horizontalSlider.value() * (max_frequency)
+            if self.isspin:
+                sampling_frequency = self.ui.spinBox_4.value()
+                
             self.ui.graphicsView_2.clear()
             orginal_signal = self.ui.graphicsView_2.plot(self.orignal_signal.getData()[0] , self.orignal_signal.getData()[1] ) # dont forget to plot the orignal not only the mixed
             # orginal_signal = self.ui.graphicsView_2.plot(self.orignal_signal_mixed[0] , self.orignal_signal_mixed[1] ) # dont forget to plot the orignal not only the mixed
 
             
-            sampling_frequency = self.ui.horizontalSlider.value() * (max_frequency)
             # sampling_frequency = 100
             sampling_interval = 1 / sampling_frequency
             x_data, y_data = orginal_signal.getData()  # Get the data from the PlotDataItem
@@ -337,6 +364,7 @@ class MyMainWindow(QMainWindow):
             self.ui.graphicsView_2.plot(x_data , reconstructed_data ,pen='g')
             # self.ui.graphicsView.plotItem.vb.setLimits(0 , 10 ,max(self.ui.graphicsView_2.plot(x_data , reconstructed_data ,pen='g').getData()[1])  )
 
+        self.plot_difference_between_graphs()
             
 
             # return sampled_x, sampled_y
@@ -345,7 +373,7 @@ class MyMainWindow(QMainWindow):
 
 
     def sinc_interp(self, sampled_x, sampled_y, xData):
-    
+        
         if len(sampled_y) != len(sampled_x):
             raise ValueError('x and s must be the same length')
 

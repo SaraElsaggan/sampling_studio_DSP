@@ -14,57 +14,160 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1177, 811)
+        MainWindow.resize(1177, 881)
+        MainWindow.setStyleSheet("QPushButton {\n"
+"  background-color: #FF7300;\n"
+"  color: white;\n"
+"  border: none;\n"
+"  padding: 10px 20px;\n"
+"  text-align: center;\n"
+"  text-decoration: none;\n"
+"  font-size: 16px;\n"
+"  margin: 4px 2px;\n"
+"  cursor: pointer;\n"
+"  border-radius: 5px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"  background-color: #192639;\n"
+"  color: #eee;\n"
+"}\n"
+"\n"
+"")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setStyleSheet("\n"
+"background-color: #676767;\n"
+"\n"
+"")
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout_3 = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout_3.setObjectName("gridLayout_3")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        font.setBold(True)
+        self.label_2.setFont(font)
+        self.label_2.setStyleSheet("QLabel {\n"
+"    color: white;\n"
+"}")
+        self.label_2.setAlignment(QtCore.Qt.AlignCenter)
         self.label_2.setObjectName("label_2")
-        self.gridLayout_3.addWidget(self.label_2, 1, 1, 1, 1)
-        spacerItem = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_3.addItem(spacerItem, 0, 5, 1, 1)
+        self.gridLayout_3.addWidget(self.label_2, 1, 0, 1, 1)
+        self.label_3 = QtWidgets.QLabel(self.centralwidget)
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        font.setBold(True)
+        self.label_3.setFont(font)
+        self.label_3.setStyleSheet("QLabel {\n"
+"    color: white;\n"
+"}")
+        self.label_3.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_3.setObjectName("label_3")
+        self.gridLayout_3.addWidget(self.label_3, 2, 0, 1, 1)
         self.gridLayout_2 = QtWidgets.QGridLayout()
         self.gridLayout_2.setObjectName("gridLayout_2")
-        spacerItem1 = QtWidgets.QSpacerItem(198, 80, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.gridLayout_2.addItem(spacerItem1, 3, 0, 1, 1)
+        spacerItem = QtWidgets.QSpacerItem(20, 70, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.gridLayout_2.addItem(spacerItem, 1, 1, 1, 1)
         self.gridLayout = QtWidgets.QGridLayout()
         self.gridLayout.setObjectName("gridLayout")
-        spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem2, 2, 0, 1, 1)
+        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
+        font = QtGui.QFont()
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        self.pushButton.setFont(font)
+        self.pushButton.setStyleSheet("background-color: #FF7300;")
+        self.pushButton.setObjectName("pushButton")
+        self.gridLayout.addWidget(self.pushButton, 1, 0, 1, 1)
         self.label_7 = QtWidgets.QLabel(self.centralwidget)
         font = QtGui.QFont()
         font.setPointSize(10)
+        font.setBold(True)
         self.label_7.setFont(font)
+        self.label_7.setStyleSheet("QLabel {\n"
+"    color: white;\n"
+"}")
         self.label_7.setAlignment(QtCore.Qt.AlignCenter)
         self.label_7.setObjectName("label_7")
-        self.gridLayout.addWidget(self.label_7, 5, 0, 1, 1)
-        spacerItem3 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem3, 4, 0, 1, 1)
+        self.gridLayout.addWidget(self.label_7, 3, 0, 1, 1)
+        spacerItem1 = QtWidgets.QSpacerItem(20, 9, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.gridLayout.addItem(spacerItem1, 0, 0, 1, 1)
         self.dial = QtWidgets.QDial(self.centralwidget)
         self.dial.setObjectName("dial")
-        self.gridLayout.addWidget(self.dial, 3, 0, 1, 1)
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.pushButton.setFont(font)
-        self.pushButton.setObjectName("pushButton")
-        self.gridLayout.addWidget(self.pushButton, 1, 0, 1, 1)
-        spacerItem4 = QtWidgets.QSpacerItem(20, 9, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.gridLayout.addItem(spacerItem4, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.dial, 2, 0, 1, 1)
         self.gridLayout_2.addLayout(self.gridLayout, 0, 0, 1, 1)
-        self.horizontalSlider = QtWidgets.QSlider(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(50)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.horizontalSlider.sizePolicy().hasHeightForWidth())
-        self.horizontalSlider.setSizePolicy(sizePolicy)
+        self.groupBox_2 = QtWidgets.QGroupBox(self.centralwidget)
         font = QtGui.QFont()
-        font.setPointSize(10)
-        self.horizontalSlider.setFont(font)
-        self.horizontalSlider.setOrientation(QtCore.Qt.Horizontal)
-        self.horizontalSlider.setObjectName("horizontalSlider")
-        self.gridLayout_2.addWidget(self.horizontalSlider, 2, 1, 1, 1)
+        font.setBold(True)
+        self.groupBox_2.setFont(font)
+        self.groupBox_2.setStyleSheet("QGroupBox {\n"
+"    border: 2px solid;\n"
+"    border-color: rgb(255, 161, 46);\n"
+"  border-radius: 5px;\n"
+"    color: #333333;\n"
+"    padding: 10px;\n"
+"    margin: 5px;\n"
+"}\n"
+"\n"
+"QGroupBox::title {\n"
+" subcontrol-position: top center;\n"
+"  background-color:  rgb(255, 161, 46);\n"
+"    subcontrol-origin: margin;\n"
+" color:rgb(255, 255, 255);\n"
+"    font: 14pt \"Arial\";\n"
+"border-radius: 5px;\n"
+"padding-left: 40px;\n"
+"    padding-right: 40px;\n"
+"\n"
+"}\n"
+"QLabel {\n"
+"    color: white;\n"
+"}")
+        self.groupBox_2.setObjectName("groupBox_2")
+        self.gridLayout_5 = QtWidgets.QGridLayout(self.groupBox_2)
+        self.gridLayout_5.setObjectName("gridLayout_5")
+        self.pushButton_3 = QtWidgets.QPushButton(self.groupBox_2)
+        font = QtGui.QFont()
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        self.pushButton_3.setFont(font)
+        self.pushButton_3.setStyleSheet("background-color: #FF7300;")
+        self.pushButton_3.setObjectName("pushButton_3")
+        self.gridLayout_5.addWidget(self.pushButton_3, 2, 1, 1, 1)
+        self.listWidget = QtWidgets.QListWidget(self.groupBox_2)
+        self.listWidget.setObjectName("listWidget")
+        item = QtWidgets.QListWidgetItem()
+        self.listWidget.addItem(item)
+        item = QtWidgets.QListWidgetItem()
+        self.listWidget.addItem(item)
+        self.gridLayout_5.addWidget(self.listWidget, 0, 0, 1, 2)
+        spacerItem2 = QtWidgets.QSpacerItem(20, 60, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.gridLayout_5.addItem(spacerItem2, 1, 1, 1, 1)
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_5.addItem(spacerItem3, 2, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.groupBox_2, 4, 0, 1, 2)
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.label_4 = QtWidgets.QLabel(self.centralwidget)
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        self.label_4.setFont(font)
+        self.label_4.setStyleSheet("QLabel {\n"
+"    color: white;\n"
+"}")
+        self.label_4.setText("")
+        self.label_4.setObjectName("label_4")
+        self.horizontalLayout.addWidget(self.label_4)
+        self.spinBox_4 = QtWidgets.QSpinBox(self.centralwidget)
+        self.spinBox_4.setObjectName("spinBox_4")
+        self.horizontalLayout.addWidget(self.spinBox_4)
+        self.gridLayout_2.addLayout(self.horizontalLayout, 2, 0, 1, 1)
+        spacerItem4 = QtWidgets.QSpacerItem(198, 90, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.gridLayout_2.addItem(spacerItem4, 3, 0, 1, 1)
         self.groupBox = QtWidgets.QGroupBox(self.centralwidget)
         self.groupBox.setEnabled(True)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
@@ -75,94 +178,161 @@ class Ui_MainWindow(object):
         self.groupBox.setMinimumSize(QtCore.QSize(20, 40))
         font = QtGui.QFont()
         font.setPointSize(10)
+        font.setBold(True)
         self.groupBox.setFont(font)
+        self.groupBox.setStyleSheet("QGroupBox {\n"
+"    border: 2px solid;\n"
+"    border-color: rgb(255, 161, 46);\n"
+"  border-radius: 5px;\n"
+"    color: #333333;\n"
+"    padding: 10px;\n"
+"    margin: 5px;\n"
+"}\n"
+"\n"
+"QGroupBox::title {\n"
+" subcontrol-position: top center;\n"
+"  background-color:  rgb(255, 161, 46);\n"
+"    subcontrol-origin: margin;\n"
+" color:rgb(255, 255, 255);\n"
+"    font: 14pt \"Arial\";\n"
+"border-radius: 5px;\n"
+"padding-left: 40px;\n"
+"    padding-right: 40px;\n"
+"\n"
+"}\n"
+"QLabel {\n"
+"    color: white;\n"
+"}\n"
+"")
         self.groupBox.setObjectName("groupBox")
         self.gridLayout_4 = QtWidgets.QGridLayout(self.groupBox)
         self.gridLayout_4.setObjectName("gridLayout_4")
         self.label_5 = QtWidgets.QLabel(self.groupBox)
+        font = QtGui.QFont()
+        font.setPointSize(8)
+        font.setBold(True)
+        self.label_5.setFont(font)
+        self.label_5.setStyleSheet("")
         self.label_5.setObjectName("label_5")
         self.gridLayout_4.addWidget(self.label_5, 0, 0, 1, 1)
         self.spinBox = QtWidgets.QSpinBox(self.groupBox)
         self.spinBox.setObjectName("spinBox")
         self.gridLayout_4.addWidget(self.spinBox, 0, 1, 1, 1)
         self.label_6 = QtWidgets.QLabel(self.groupBox)
+        font = QtGui.QFont()
+        font.setPointSize(8)
+        font.setBold(True)
+        self.label_6.setFont(font)
         self.label_6.setObjectName("label_6")
         self.gridLayout_4.addWidget(self.label_6, 1, 0, 1, 1)
         self.spinBox_2 = QtWidgets.QSpinBox(self.groupBox)
         self.spinBox_2.setObjectName("spinBox_2")
         self.gridLayout_4.addWidget(self.spinBox_2, 1, 1, 1, 1)
         self.label_8 = QtWidgets.QLabel(self.groupBox)
+        font = QtGui.QFont()
+        font.setPointSize(8)
+        font.setBold(True)
+        self.label_8.setFont(font)
         self.label_8.setObjectName("label_8")
         self.gridLayout_4.addWidget(self.label_8, 2, 0, 1, 1)
         self.spinBox_3 = QtWidgets.QSpinBox(self.groupBox)
         self.spinBox_3.setObjectName("spinBox_3")
         self.gridLayout_4.addWidget(self.spinBox_3, 2, 1, 1, 1)
         self.pushButton_2 = QtWidgets.QPushButton(self.groupBox)
+        font = QtGui.QFont()
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        self.pushButton_2.setFont(font)
+        self.pushButton_2.setStyleSheet("background-color: #FF7300;")
         self.pushButton_2.setObjectName("pushButton_2")
         self.gridLayout_4.addWidget(self.pushButton_2, 3, 1, 1, 1)
         self.gridLayout_2.addWidget(self.groupBox, 0, 1, 1, 1)
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.label_4 = QtWidgets.QLabel(self.centralwidget)
+        self.horizontalSlider = QtWidgets.QSlider(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(50)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.horizontalSlider.sizePolicy().hasHeightForWidth())
+        self.horizontalSlider.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
-        font.setPointSize(11)
-        self.label_4.setFont(font)
-        self.label_4.setObjectName("label_4")
-        self.horizontalLayout.addWidget(self.label_4)
-        spacerItem5 = QtWidgets.QSpacerItem(50, 19, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem5)
-        self.gridLayout_2.addLayout(self.horizontalLayout, 2, 0, 1, 1)
-        self.groupBox_2 = QtWidgets.QGroupBox(self.centralwidget)
-        self.groupBox_2.setObjectName("groupBox_2")
-        self.gridLayout_5 = QtWidgets.QGridLayout(self.groupBox_2)
-        self.gridLayout_5.setObjectName("gridLayout_5")
-        self.pushButton_3 = QtWidgets.QPushButton(self.groupBox_2)
-        self.pushButton_3.setObjectName("pushButton_3")
-        self.gridLayout_5.addWidget(self.pushButton_3, 2, 1, 1, 1)
-        self.listWidget = QtWidgets.QListWidget(self.groupBox_2)
-        self.listWidget.setObjectName("listWidget")
-        item = QtWidgets.QListWidgetItem()
-        self.listWidget.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.listWidget.addItem(item)
-        self.gridLayout_5.addWidget(self.listWidget, 0, 0, 1, 2)
-        spacerItem6 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.gridLayout_5.addItem(spacerItem6, 1, 1, 1, 1)
-        spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_5.addItem(spacerItem7, 2, 0, 1, 1)
-        self.gridLayout_2.addWidget(self.groupBox_2, 4, 0, 1, 2)
-        spacerItem8 = QtWidgets.QSpacerItem(20, 50, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.gridLayout_2.addItem(spacerItem8, 1, 1, 1, 1)
-        self.gridLayout_3.addLayout(self.gridLayout_2, 0, 4, 3, 1)
+        font.setPointSize(10)
+        self.horizontalSlider.setFont(font)
+        self.horizontalSlider.setStyleSheet("QSlider {\n"
+"    border: 1px solid #000;\n"
+"    background: #EEE;\n"
+"border-radius:5px;\n"
+"\n"
+"}\n"
+"QSlider::handle {\n"
+"    background: rgb(255, 161, 46);\n"
+"    border: 1px solid #000;\n"
+"    width: 10px;\n"
+"\n"
+"   \n"
+"}\n"
+"QSlider::groove {\n"
+"    background: #CCC;\'\n"
+"\n"
+"}\n"
+"")
+        self.horizontalSlider.setOrientation(QtCore.Qt.Horizontal)
+        self.horizontalSlider.setObjectName("horizontalSlider")
+        self.gridLayout_2.addWidget(self.horizontalSlider, 2, 1, 1, 1)
+        self.gridLayout_3.addLayout(self.gridLayout_2, 0, 3, 3, 1)
+        spacerItem5 = QtWidgets.QSpacerItem(10, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_3.addItem(spacerItem5, 0, 2, 1, 1)
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
         self.graphicsView_2 = PlotWidget(self.centralwidget)
+        self.graphicsView_2.setStyleSheet("")
         self.graphicsView_2.setObjectName("graphicsView_2")
         self.verticalLayout.addWidget(self.graphicsView_2)
-        spacerItem9 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
-        self.verticalLayout.addItem(spacerItem9)
+        spacerItem6 = QtWidgets.QSpacerItem(20, 1, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        self.verticalLayout.addItem(spacerItem6)
         self.graphicsView = PlotWidget(self.centralwidget)
+        self.graphicsView.setStyleSheet("QPlotGraph {\n"
+"  background-color: #3498db;\n"
+"  color: white;\n"
+"  border: none;\n"
+"  padding: 10px 20px;\n"
+"  text-align: center;\n"
+"  text-decoration: none;\n"
+"  font-size: 16px;\n"
+"  margin: 4px 2px;\n"
+"  cursor: pointer;\n"
+"  border-radius: 5px;\n"
+"}\n"
+"\n"
+"QPlotGraph:hover {\n"
+"  background-color: #192639;\n"
+"  color: #eee;\n"
+"}\n"
+"")
         self.graphicsView.setObjectName("graphicsView")
         self.verticalLayout.addWidget(self.graphicsView)
-        spacerItem10 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
-        self.verticalLayout.addItem(spacerItem10)
+        spacerItem7 = QtWidgets.QSpacerItem(20, 1, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        self.verticalLayout.addItem(spacerItem7)
         self.graphicsView_3 = PlotWidget(self.centralwidget)
         self.graphicsView_3.setObjectName("graphicsView_3")
         self.verticalLayout.addWidget(self.graphicsView_3)
-        self.gridLayout_3.addLayout(self.verticalLayout, 0, 2, 3, 1)
+        self.gridLayout_3.addLayout(self.verticalLayout, 0, 1, 3, 1)
+        spacerItem8 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_3.addItem(spacerItem8, 0, 4, 1, 1)
         self.label = QtWidgets.QLabel(self.centralwidget)
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        font.setBold(True)
+        self.label.setFont(font)
+        self.label.setStyleSheet("QLabel {\n"
+"    color: white;\n"
+"}")
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
-        self.gridLayout_3.addWidget(self.label, 0, 1, 1, 1)
-        spacerItem11 = QtWidgets.QSpacerItem(70, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_3.addItem(spacerItem11, 0, 3, 1, 1)
-        self.label_3 = QtWidgets.QLabel(self.centralwidget)
-        self.label_3.setObjectName("label_3")
-        self.gridLayout_3.addWidget(self.label_3, 2, 1, 1, 1)
-        spacerItem12 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_3.addItem(spacerItem12, 0, 0, 1, 1)
+        self.gridLayout_3.addWidget(self.label, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1177, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1177, 26))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -179,14 +349,9 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label_2.setText(_translate("MainWindow", "Reconstructed signal"))
-        self.label_7.setText(_translate("MainWindow", "SNR level"))
+        self.label_3.setText(_translate("MainWindow", "Calculated Error "))
         self.pushButton.setText(_translate("MainWindow", "Import"))
-        self.groupBox.setTitle(_translate("MainWindow", "Add signal"))
-        self.label_5.setText(_translate("MainWindow", "Adjust frequency"))
-        self.label_6.setText(_translate("MainWindow", "Adjust amplitude"))
-        self.label_8.setText(_translate("MainWindow", "Adjust phase"))
-        self.pushButton_2.setText(_translate("MainWindow", "Add"))
-        self.label_4.setText(_translate("MainWindow", "Sampling range"))
+        self.label_7.setText(_translate("MainWindow", "SNR level"))
         self.groupBox_2.setTitle(_translate("MainWindow", "Mixed Signals"))
         self.pushButton_3.setText(_translate("MainWindow", "Remove"))
         __sortingEnabled = self.listWidget.isSortingEnabled()
@@ -196,7 +361,11 @@ class Ui_MainWindow(object):
         item = self.listWidget.item(1)
         item.setText(_translate("MainWindow", "Signal_2"))
         self.listWidget.setSortingEnabled(__sortingEnabled)
+        self.groupBox.setTitle(_translate("MainWindow", "Add signal"))
+        self.label_5.setText(_translate("MainWindow", "Adjust frequency"))
+        self.label_6.setText(_translate("MainWindow", "Adjust amplitude"))
+        self.label_8.setText(_translate("MainWindow", "Adjust phase"))
+        self.pushButton_2.setText(_translate("MainWindow", "Add"))
         self.label.setText(_translate("MainWindow", "Original signal"))
-        self.label_3.setText(_translate("MainWindow", "Calculated Error "))
         self.menuFile.setTitle(_translate("MainWindow", "File"))
 from pyqtgraph import PlotWidget

@@ -7,41 +7,87 @@
     <x>0</x>
     <y>0</y>
     <width>1177</width>
-    <height>811</height>
+    <height>881</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QPushButton {
+  background-color: #FF7300;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+QPushButton:hover {
+  background-color: #192639;
+  color: #eee;
+}
+
+</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">
+background-color: #676767;
+
+</string>
+   </property>
    <layout class="QGridLayout" name="gridLayout_3">
-    <item row="1" column="1">
+    <item row="1" column="0">
      <widget class="QLabel" name="label_2">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+    color: white;
+}</string>
+      </property>
       <property name="text">
        <string>Reconstructed signal</string>
       </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
      </widget>
     </item>
-    <item row="0" column="5">
-     <spacer name="horizontalSpacer_3">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_3">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <bold>true</bold>
+       </font>
       </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Fixed</enum>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+    color: white;
+}</string>
       </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>20</height>
-       </size>
+      <property name="text">
+       <string>Calculated Error </string>
       </property>
-     </spacer>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
     </item>
-    <item row="0" column="4" rowspan="3">
+    <item row="0" column="3" rowspan="3">
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="3" column="0">
-       <spacer name="verticalSpacer_5">
+      <item row="1" column="1">
+       <spacer name="verticalSpacer_7">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
         </property>
@@ -50,73 +96,50 @@
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>198</width>
-          <height>80</height>
+          <width>20</width>
+          <height>70</height>
          </size>
         </property>
        </spacer>
       </item>
       <item row="0" column="0">
        <layout class="QGridLayout" name="gridLayout">
-        <item row="2" column="0">
-         <spacer name="verticalSpacer_4">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
+        <item row="1" column="0">
+         <widget class="QPushButton" name="pushButton">
+          <property name="font">
+           <font>
+            <pointsize>-1</pointsize>
+            <bold>true</bold>
+            <underline>false</underline>
+            <strikeout>false</strikeout>
+           </font>
           </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Minimum</enum>
+          <property name="styleSheet">
+           <string notr="true">background-color: #FF7300;</string>
           </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
+          <property name="text">
+           <string>Import</string>
           </property>
-         </spacer>
+         </widget>
         </item>
-        <item row="5" column="0">
+        <item row="3" column="0">
          <widget class="QLabel" name="label_7">
           <property name="font">
            <font>
             <pointsize>10</pointsize>
+            <bold>true</bold>
            </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    color: white;
+}</string>
           </property>
           <property name="text">
            <string>SNR level</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="0">
-         <spacer name="verticalSpacer_3">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Minimum</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="3" column="0">
-         <widget class="QDial" name="dial"/>
-        </item>
-        <item row="1" column="0">
-         <widget class="QPushButton" name="pushButton">
-          <property name="font">
-           <font>
-            <pointsize>10</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>Import</string>
           </property>
          </widget>
         </item>
@@ -136,132 +159,60 @@
           </property>
          </spacer>
         </item>
-       </layout>
-      </item>
-      <item row="2" column="1">
-       <widget class="QSlider" name="horizontalSlider">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-          <horstretch>50</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>10</pointsize>
-         </font>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QGroupBox" name="groupBox">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>10</pointsize>
-         </font>
-        </property>
-        <property name="title">
-         <string>Add signal</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_4">
-         <item row="0" column="0">
-          <widget class="QLabel" name="label_5">
-           <property name="text">
-            <string>Adjust frequency</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QSpinBox" name="spinBox"/>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="label_6">
-           <property name="text">
-            <string>Adjust amplitude</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QSpinBox" name="spinBox_2"/>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_8">
-           <property name="text">
-            <string>Adjust phase</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QSpinBox" name="spinBox_3"/>
-         </item>
-         <item row="3" column="1">
-          <widget class="QPushButton" name="pushButton_2">
-           <property name="text">
-            <string>Add</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <widget class="QLabel" name="label_4">
-          <property name="font">
-           <font>
-            <pointsize>11</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>Sampling range</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Minimum</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>50</width>
-            <height>19</height>
-           </size>
-          </property>
-         </spacer>
+        <item row="2" column="0">
+         <widget class="QDial" name="dial"/>
         </item>
        </layout>
       </item>
       <item row="4" column="0" colspan="2">
        <widget class="QGroupBox" name="groupBox_2">
+        <property name="font">
+         <font>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QGroupBox {
+    border: 2px solid;
+	border-color: rgb(255, 161, 46);
+  border-radius: 5px;
+    color: #333333;
+    padding: 10px;
+    margin: 5px;
+}
+
+QGroupBox::title {
+ subcontrol-position: top center;
+  background-color:  rgb(255, 161, 46);
+    subcontrol-origin: margin;
+ color:rgb(255, 255, 255);
+    font: 14pt &quot;Arial&quot;;
+border-radius: 5px;
+padding-left: 40px;
+    padding-right: 40px;
+
+}
+QLabel {
+    color: white;
+}</string>
+        </property>
         <property name="title">
          <string>Mixed Signals</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_5">
          <item row="2" column="1">
           <widget class="QPushButton" name="pushButton_3">
+           <property name="font">
+            <font>
+             <pointsize>-1</pointsize>
+             <bold>true</bold>
+             <underline>false</underline>
+             <strikeout>false</strikeout>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: #FF7300;</string>
+           </property>
            <property name="text">
             <string>Remove</string>
            </property>
@@ -292,7 +243,7 @@
            <property name="sizeHint" stdset="0">
             <size>
              <width>20</width>
-             <height>20</height>
+             <height>60</height>
             </size>
            </property>
           </spacer>
@@ -313,8 +264,33 @@
         </layout>
        </widget>
       </item>
-      <item row="1" column="1">
-       <spacer name="verticalSpacer_7">
+      <item row="2" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QLabel" name="label_4">
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    color: white;
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSpinBox" name="spinBox_4"/>
+        </item>
+       </layout>
+      </item>
+      <item row="3" column="0">
+       <spacer name="verticalSpacer_5">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
         </property>
@@ -323,18 +299,201 @@
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>20</width>
-          <height>50</height>
+          <width>198</width>
+          <height>90</height>
          </size>
         </property>
        </spacer>
       </item>
+      <item row="0" column="1">
+       <widget class="QGroupBox" name="groupBox">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QGroupBox {
+    border: 2px solid;
+	border-color: rgb(255, 161, 46);
+  border-radius: 5px;
+    color: #333333;
+    padding: 10px;
+    margin: 5px;
+}
+
+QGroupBox::title {
+ subcontrol-position: top center;
+  background-color:  rgb(255, 161, 46);
+    subcontrol-origin: margin;
+ color:rgb(255, 255, 255);
+    font: 14pt &quot;Arial&quot;;
+border-radius: 5px;
+padding-left: 40px;
+    padding-right: 40px;
+
+}
+QLabel {
+    color: white;
+}
+</string>
+        </property>
+        <property name="title">
+         <string>Add signal</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_4">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_5">
+           <property name="font">
+            <font>
+             <pointsize>8</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="text">
+            <string>Adjust frequency</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QSpinBox" name="spinBox"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_6">
+           <property name="font">
+            <font>
+             <pointsize>8</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Adjust amplitude</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QSpinBox" name="spinBox_2"/>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_8">
+           <property name="font">
+            <font>
+             <pointsize>8</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Adjust phase</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QSpinBox" name="spinBox_3"/>
+         </item>
+         <item row="3" column="1">
+          <widget class="QPushButton" name="pushButton_2">
+           <property name="font">
+            <font>
+             <pointsize>-1</pointsize>
+             <bold>true</bold>
+             <underline>false</underline>
+             <strikeout>false</strikeout>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: #FF7300;</string>
+           </property>
+           <property name="text">
+            <string>Add</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QSlider" name="horizontalSlider">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>50</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QSlider {
+    border: 1px solid #000;
+    background: #EEE;
+border-radius:5px;
+
+}
+QSlider::handle {
+    background: rgb(255, 161, 46);
+    border: 1px solid #000;
+    width: 10px;
+
+   
+}
+QSlider::groove {
+    background: #CCC;'
+
+}
+</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
      </layout>
     </item>
-    <item row="0" column="2" rowspan="3">
+    <item row="0" column="2">
+     <spacer name="horizontalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>10</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="0" column="1" rowspan="3">
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="PlotWidget" name="graphicsView_2"/>
+       <widget class="PlotWidget" name="graphicsView_2">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+       </widget>
       </item>
       <item>
        <spacer name="verticalSpacer">
@@ -347,13 +506,34 @@
         <property name="sizeHint" stdset="0">
          <size>
           <width>20</width>
-          <height>20</height>
+          <height>1</height>
          </size>
         </property>
        </spacer>
       </item>
       <item>
-       <widget class="PlotWidget" name="graphicsView"/>
+       <widget class="PlotWidget" name="graphicsView">
+        <property name="styleSheet">
+         <string notr="true">QPlotGraph {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+QPlotGraph:hover {
+  background-color: #192639;
+  color: #eee;
+}
+</string>
+        </property>
+       </widget>
       </item>
       <item>
        <spacer name="verticalSpacer_2">
@@ -366,7 +546,7 @@
         <property name="sizeHint" stdset="0">
          <size>
           <width>20</width>
-          <height>20</height>
+          <height>1</height>
          </size>
         </property>
        </spacer>
@@ -376,38 +556,8 @@
       </item>
      </layout>
     </item>
-    <item row="0" column="1">
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>Original signal</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="3">
-     <spacer name="horizontalSpacer_2">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Fixed</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>70</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="2" column="1">
-     <widget class="QLabel" name="label_3">
-      <property name="text">
-       <string>Calculated Error </string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <spacer name="horizontalSpacer_4">
+    <item row="0" column="4">
+     <spacer name="horizontalSpacer_3">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
@@ -422,6 +572,27 @@
       </property>
      </spacer>
     </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+    color: white;
+}</string>
+      </property>
+      <property name="text">
+       <string>Original signal</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -430,7 +601,7 @@
      <x>0</x>
      <y>0</y>
      <width>1177</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
