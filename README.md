@@ -5,18 +5,22 @@
 - [Demo](#Demo)
 - [Features](#features)
 - [Getting Started](#getting-started)
+  
 ---
 
 ## Project Description
 This desktop application is designed to illustrate the concepts of signal sampling and recovery, highlighting the importance and validation of the Nyquist rate. The application allows users to load a mid-length signal (approximately 1000 points) and perform various operations related to signal processing. It showcases the visualization, sampling, and recovery of signals, along with the ability to compose and manipulate signals with different components.
 
-![Builtin example](https://github.com/SaraElsaggan/sampling_studio_DSP/imgs/built in example)
-This is reconstruction of one of the built in examples
-![image](https://github.com/SaraElsaggan/sampling_studio_DSP/assets/105241119/c3877402-576f-48b3-80b4-6c50ab3508a7)
-![image](https://github.com/SaraElsaggan/sampling_studio_DSP/assets/105241119/9632174c-9b9c-44f8-b6bb-a1f3f35e0427)
-![image](https://github.com/SaraElsaggan/sampling_studio_DSP/assets/105241119/3309ce9c-9651-4cff-9cb7-1513a2f21c1d)
+![Builtin example](imgs/built%20in%20example.jpg)
+This is reconstruction of one of the builtin examples.
+![image](imgs/imported%20signal%20with%20noise.jpg)
+This is reconstruction of imported signal with added noise.
+![image](imgs/imported%20signal.jpg)
+This is reconstruction of imported signal.
+![image](imgs/manually%20generated%20signal.jpg)
+This is reconstruction of manually generated sinusoidal signal.
 
-
+###Demo
 
 ### Application Features
 The application boasts the following key features:
