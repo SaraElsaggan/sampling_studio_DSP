@@ -218,8 +218,7 @@ class MyMainWindow(QMainWindow):
 
         self.ui.graph_orignal.plotItem.vb.setLimits(xMin=min_x , xMax=max_x, yMin=min_y , yMax=max_y)
         self.update_component_list() 
-               
-        
+ 
     def min_max(self, graph):
         min_x =  min(graph.getData()[0])
         max_x =  max(graph.getData()[0])
@@ -285,7 +284,9 @@ class MyMainWindow(QMainWindow):
             self.ui.graph_orignal.clear()
             self.orignal_signal = self.ui.graph_orignal.plot(self.time , self.mixed_signal_with_noise )
             # self.orignal_signal_mixed = (self.time , self.mixed_signal_with_noise )
-    
+        self.sampling()
+        self.plot_difference_between_graphs()
+                
     def sampling(self):
         if self.ismixed:
             if self.isslider:
