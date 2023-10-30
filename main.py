@@ -1,3 +1,4 @@
+from scipy.signal import resample
 from scipy.interpolate import interp1d
 from PyQt5 import QtCore, QtGui
 import os
@@ -21,7 +22,7 @@ class MyMainWindow(QMainWindow):
         
       
         
-        self.time = np.linspace(0, 10 , 1000)
+        self.time = np.linspace(0, 1 , 1000)
         
         # self.orignal_signal = []
         # self.signals_components = []
@@ -100,14 +101,22 @@ class MyMainWindow(QMainWindow):
         self.ui.dial_noise.setMaximum(10)
         self.ui.dial_noise.valueChanged.connect(self.add_noise_try)
         self.ui.horizontalSlider.valueChanged.connect(self.input_freq_slider)
-        self.ui.btn_sample.clicked.connect(self.input_freq_spin)
+        # self.ui.btn_sample.clicked.connect(self.input_freq_spin)
+        self.ui.spin__samp_freq.editingFinished.connect(self.input_freq_spin)
         self.ui.btn_import.clicked.connect(self.load_signal)
         self.ui.btn_add_comp.clicked.connect(self.create_signal_component)
         self.ui.btn_remove.clicked.connect(self.remove_component)
         
         
-        self.ui.comb_bx_examp.currentIndexChanged.connect(self.plot_composed_signal)
+        self.ui.comb_bx_examp.currentIndexChanged.connect(self.plot_example)
       
+    #   def example_list_update(self ,self.ui. ):
+    #       for comp in self.signals_components:
+    #         #   if self.ui.list_comps.currentIndex() == 0:
+                  
+      
+   
+   
     def input_freq_slider(self):
         self.isslider = True
         self.isspin = False
@@ -120,10 +129,7 @@ class MyMainWindow(QMainWindow):
         
     def load_signal(self):
         file_path  , _ = QFileDialog.getOpenFileName( self , "open file", "" ,"(*.csv) ")
-        # data = np.genfromtxt(file_path, delimiter = ',')
-        # self.x = data[:, 0].tolist()
-        # self.y = data[:, 1].tolist()
-
+    
         data = pd.read_csv(file_path)
         
         self.yData = data.values[:, 1]
@@ -134,8 +140,8 @@ class MyMainWindow(QMainWindow):
         maxpower = max(FTydata)
         noise = (maxpower/100)
         self.fmaxtuble = np.where(FTydata > noise)
-        self.maxFreq = max(self.fmaxtuble[0])
-        print(self.maxFreq)
+        self.max_freq = max(self.fmaxtuble[0])
+        print(self.max_freq)
         self.ui.graph_orignal.clear()
         self.orignal_signal = self.ui.graph_orignal.plotItem.plot(self.xData , self.yData , pen="#ffffff")
         self.ui.graph_orignal.plotItem.vb.setLimits(xMin= np.min(self.xData), xMax=max(self.xData), yMin=min(self.yData) , yMax=max(self.yData))
@@ -162,61 +168,55 @@ class MyMainWindow(QMainWindow):
         }
         
         self.signals_components.append(signal_component)
+        self.plot_compose_signal()
         
         # self.update_component_list()        
-        self.plot_composed_signal()
-        
-    def plot_composed_signal(self):
+       
+    def plot_example(self):
         self.ui.graph_orignal.clear()
-        
-        if self.ui.chk_bx_examp.isChecked():
-                comp_0 = self.signals_components[0]['amplitude'] * np.sin(2 * np.pi * self.signals_components[0]['frequency']  * self.time + self.signals_components[0]['phase'])
-                print("ger" , len(comp_0))
-                comp_1 = self.signals_components[1]['amplitude'] * np.sin(2 * np.pi * self.signals_components[1]['frequency']  * self.time + self.signals_components[1]['phase'])
-                comp_2 = self.signals_components[2]['amplitude'] * np.sin(2 * np.pi * self.signals_components[2]['frequency']  * self.time + self.signals_components[2]['phase'])
-                comp_3 = self.signals_components[3]['amplitude'] * np.sin(2 * np.pi * self.signals_components[3]['frequency']  * self.time + self.signals_components[3]['phase'])
-                comp_4 = self.signals_components[4]['amplitude'] * np.sin(2 * np.pi * self.signals_components[4]['frequency']  * self.time + self.signals_components[4]['phase'])
-                comp_5 = self.signals_components[5]['amplitude'] * np.sin(2 * np.pi * self.signals_components[5]['frequency']  * self.time + self.signals_components[5]['phase'])
+        comp_0 = self.signals_components[0]['amplitude'] * np.sin(2 * np.pi * self.signals_components[0]['frequency']  * self.time + self.signals_components[0]['phase'])
+        print("ger" , len(comp_0))
+        comp_1 = self.signals_components[1]['amplitude'] * np.sin(2 * np.pi * self.signals_components[1]['frequency']  * self.time + self.signals_components[1]['phase'])
+        comp_2 = self.signals_components[2]['amplitude'] * np.sin(2 * np.pi * self.signals_components[2]['frequency']  * self.time + self.signals_components[2]['phase'])
+        comp_3 = self.signals_components[3]['amplitude'] * np.sin(2 * np.pi * self.signals_components[3]['frequency']  * self.time + self.signals_components[3]['phase'])
+        comp_4 = self.signals_components[4]['amplitude'] * np.sin(2 * np.pi * self.signals_components[4]['frequency']  * self.time + self.signals_components[4]['phase'])
+        comp_5 = self.signals_components[5]['amplitude'] * np.sin(2 * np.pi * self.signals_components[5]['frequency']  * self.time + self.signals_components[5]['phase'])
 
-                if self.ui.comb_bx_examp.currentIndex() == 0:
-                    signal = comp_0 + comp_1
-                    
-                elif self.ui.comb_bx_examp.currentIndex() == 1:
-                    signal = comp_2 + comp_3
+        if self.ui.comb_bx_examp.currentIndex() == 1:
+            signal = comp_0 + comp_1
+            
+        elif self.ui.comb_bx_examp.currentIndex() == 2:
+            signal = comp_2 + comp_3
+
+        elif self.ui.comb_bx_examp.currentIndex() == 3:
+            signal = comp_4 + comp_5
+           
+        self.plot_sine_signal(signal)
         
-                elif self.ui.comb_bx_examp.currentIndex() == 2:
-                    signal = comp_4 + comp_5
+    def plot_compose_signal(self):
+        signal = self.signals_components[6]['amplitude'] * np.sin(2 * np.pi * self.signals_components[6]['frequency']  * self.time + self.signals_components[6]['phase'])
+        for component in self.signals_components[6:]:
+            add_comp = component['amplitude'] * np.sin(2 * np.pi * component['frequency']  * self.time + component['phase'])
+            signal += add_comp
+            self.plot_sine_signal(signal)
+        self.ismixed = True
+        self.isloaded = False
         
-                else:
-                    self.ui.graph_recons.clear()
-                    self.ui.graph_orignal.clear()
-                    self.ui.graph_error.clear()
+
+       
         
-        elif len(self.signals_components) > 5 :
-            signal = self.signals_components[6]['amplitude'] * np.sin(2 * np.pi * self.signals_components[6]['frequency']  * self.time + self.signals_components[6]['phase'])
-            for component in self.signals_components[6:]:
-                add_comp = component['amplitude'] * np.sin(2 * np.pi * component['frequency']  * self.time + component['phase'])
-                signal += add_comp
-                
+    def plot_sine_signal(self , signal):
+        self.ui.graph_orignal.clear()
         self.mixed_signal = signal
             
         self.orignal_signal = self.ui.graph_orignal.plot( self.time , signal) 
         
-        self.ismixed = True
-        self.isloaded = False
-        
-        # self.orignal_signal = plotted_mixed_signal
+       
         self.orignal_signal_xy = (self.time , signal )
 
-        
-        min_x =  min(self.orignal_signal.getData()[0])
-        max_x =  max(self.orignal_signal.getData()[0])
-
-
-        min_y =  min(self.orignal_signal.getData()[1])
-        max_y =  max(self.orignal_signal.getData()[1])
-
-        self.ui.graph_orignal.plotItem.vb.setLimits(xMin=min_x , xMax=max_x, yMin=min_y , yMax=max_y)
+        #set limits of the graph
+        min_x , max_x , min_y , max_y = self.min_max(self.orignal_signal)
+        self.ui.graph_orignal.plotItem.vb.setLimits( xMin=min_x , xMax=max_x, yMin=min_y , yMax=max_y)  
         self.update_component_list() 
  
     def min_max(self, graph):
@@ -234,8 +234,8 @@ class MyMainWindow(QMainWindow):
         x_data_1, y_data_1 = self.ui.graph_orignal.plotItem.curves[0].getData()
         x_data_2, y_data_2 = self.ui.graph_recons.plotItem.curves[0].getData()
         difference = np.array(y_data_1) - np.array(y_data_2)
-        data_lina = self.ui.graph_error.plot(x_data_1, difference, pen='r')  
-        min_x , max_x , min_y , max_y = self.min_max(data_lina)
+        data_line = self.ui.graph_error.plot(x_data_1, difference, pen='r')  
+        min_x , max_x , min_y , max_y = self.min_max(data_line)
         self.ui.graph_error.plotItem.vb.setLimits( xMin=min_x , xMax=max_x, yMin=min_y , yMax=max_y)  
     
     def update_component_list(self):
@@ -286,41 +286,39 @@ class MyMainWindow(QMainWindow):
             # self.orignal_signal_mixed = (self.time , self.mixed_signal_with_noise )
         self.sampling()
         self.plot_difference_between_graphs()
-                
+    
+      
     def sampling(self):
         if self.ismixed:
+            #get the sampling frequency 
             if self.isslider:
                 max_frequency = self.signals_components[0]["frequency"]
                 for component in self.signals_components:
                     if component["frequency"] > max_frequency:
                         max_frequency = component["frequency"]
                 sampling_frequency = self.ui.horizontalSlider.value() * (max_frequency)
+                self.ui.lbl_samp_freq.setText(f"{self.ui.horizontalSlider.value()} fmax")
             if self.isspin:
                 sampling_frequency = self.ui.spin__samp_freq.value()
                 
             self.ui.graph_orignal.clear()
             orginal_signal = self.ui.graph_orignal.plot(self.orignal_signal.getData()[0] , self.orignal_signal.getData()[1] ) # dont forget to plot the orignal not only the mixed
-            # orginal_signal = self.ui.graph_orignal.plot(self.orignal_signal_mixed[0] , self.orignal_signal_mixed[1] ) # dont forget to plot the orignal not only the mixed
-
-            
-            # sampling_frequency = 100
             sampling_interval = 1 / sampling_frequency
             x_data, y_data = orginal_signal.getData()  # Get the data from the PlotDataItem
             num_samples = int((x_data[-1] - x_data[0]) / sampling_interval)
-
-        # Sample the signal within the available data range
-            sampled_signal_x = x_data[::int(len(x_data) / num_samples)]
-            sampled_signal_y = y_data[::int(len(x_data) / num_samples)]
+            sampled_signal_x = np.linspace(x_data[0], x_data[-1], num_samples, endpoint=False)
+            sampled_signal_y = resample(y_data, num_samples)
+            
             sampled_plot = self.ui.graph_orignal.plot(sampled_signal_x, sampled_signal_y ,  pen=None, symbol='o', symbolSize=7, symbolPen='b', symbolBrush='b')
             reconstructed_data = self.sinc_interp(sampled_signal_x , sampled_signal_y , x_data)
             
             self.ui.graph_recons.clear()
             rec_data_line  = self.ui.graph_recons.plot(x_data , reconstructed_data ,pen='g')
-            self.ui.graph_orignal.plot(x_data , reconstructed_data ,pen='g')
+            # self.ui.graph_orignal.plot(x_data , reconstructed_data ,pen='g')
             # self.ui.graph_recons.plotItem.vb.setLimits(0 , 10 ,max(self.ui.graph_orignal.plot(x_data , reconstructed_data ,pen='g').getData()[1])  )
 
         if self.isloaded:
-            sampling_rate = self.ui.horizontalSlider.value() * self.maxFreq
+            sampling_rate = self.ui.horizontalSlider.value() * self.max_freq
 
     # Ensure that x and y are NumPy arrays
             x_data, y_data = self.orignal_signal.getData()  # Get the data from the PlotDataItem
@@ -374,12 +372,13 @@ class MyMainWindow(QMainWindow):
 
             self.ui.graph_orignal.plot(x_data , reconstructed_data ,pen='g')
             # self.ui.graph_recons.plotItem.vb.setLimits(0 , 10 ,max(self.ui.graph_orignal.plot(x_data , reconstructed_data ,pen='g').getData()[1])  )
+    
         min_x , max_x , min_y , max_y = self.min_max(rec_data_line)
         self.ui.graph_recons.plotItem.vb.setLimits( xMin=min_x , xMax=max_x, yMin=min_y , yMax=max_y) 
         self.plot_difference_between_graphs()
             
 
-            # return sampled_x, sampled_y
+            # return sampled_x, sampled_y§
 
     def sinc_interp(self, sampled_x, sampled_y, xData):
         

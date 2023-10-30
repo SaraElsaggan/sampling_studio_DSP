@@ -1,1 +1,1 @@
-spin__samp_freq
+examp

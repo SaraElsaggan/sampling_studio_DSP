@@ -112,123 +112,13 @@ class Ui_MainWindow(object):
         self.gridLayout_3.addWidget(self.label, 0, 0, 1, 1)
         self.gridLayout_2 = QtWidgets.QGridLayout()
         self.gridLayout_2.setObjectName("gridLayout_2")
-        self.btn_sample = QtWidgets.QPushButton(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.btn_sample.sizePolicy().hasHeightForWidth())
-        self.btn_sample.setSizePolicy(sizePolicy)
-        font = QtGui.QFont()
-        font.setPointSize(-1)
-        font.setBold(True)
-        font.setUnderline(False)
-        font.setStrikeOut(False)
-        self.btn_sample.setFont(font)
-        self.btn_sample.setStyleSheet("background-color: #FF7300;\n"
-"margin-left:100%;\n"
-"margin-right:100%;")
-        self.btn_sample.setObjectName("btn_sample")
-        self.gridLayout_2.addWidget(self.btn_sample, 10, 3, 1, 2)
-        self.label_11 = QtWidgets.QLabel(self.centralwidget)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        font.setBold(True)
-        self.label_11.setFont(font)
-        self.label_11.setObjectName("label_11")
-        self.gridLayout_2.addWidget(self.label_11, 6, 3, 1, 2)
-        spacerItem2 = QtWidgets.QSpacerItem(20, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.gridLayout_2.addItem(spacerItem2, 2, 0, 1, 1)
-        self.gridLayout = QtWidgets.QGridLayout()
-        self.gridLayout.setObjectName("gridLayout")
-        self.btn_import = QtWidgets.QPushButton(self.centralwidget)
-        font = QtGui.QFont()
-        font.setPointSize(-1)
-        font.setBold(True)
-        font.setUnderline(False)
-        font.setStrikeOut(False)
-        self.btn_import.setFont(font)
-        self.btn_import.setStyleSheet("background-color: #FF7300;")
-        self.btn_import.setObjectName("btn_import")
-        self.gridLayout.addWidget(self.btn_import, 1, 0, 1, 1)
-        self.label_7 = QtWidgets.QLabel(self.centralwidget)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        font.setBold(True)
-        self.label_7.setFont(font)
-        self.label_7.setStyleSheet("QLabel {\n"
-"    color: white;\n"
-"}\n"
-"")
-        self.label_7.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_7.setObjectName("label_7")
-        self.gridLayout.addWidget(self.label_7, 3, 0, 1, 1)
-        spacerItem3 = QtWidgets.QSpacerItem(20, 9, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.gridLayout.addItem(spacerItem3, 0, 0, 1, 1)
-        self.dial_noise = QtWidgets.QDial(self.centralwidget)
-        self.dial_noise.setObjectName("dial_noise")
-        self.gridLayout.addWidget(self.dial_noise, 2, 0, 1, 1)
-        self.gridLayout_2.addLayout(self.gridLayout, 0, 0, 1, 1)
-        self.label_10 = QtWidgets.QLabel(self.centralwidget)
-        font = QtGui.QFont()
-        font.setBold(True)
-        self.label_10.setFont(font)
-        self.label_10.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_10.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_10.setObjectName("label_10")
-        self.gridLayout_2.addWidget(self.label_10, 7, 0, 1, 1)
         self.spin__samp_freq = QtWidgets.QSpinBox(self.centralwidget)
         self.spin__samp_freq.setStyleSheet("border: 2px solid  rgb(255, 170, 0);\n"
 "border-radius:5px;")
         self.spin__samp_freq.setObjectName("spin__samp_freq")
-        self.gridLayout_2.addWidget(self.spin__samp_freq, 7, 3, 1, 1)
-        self.groupBox_2 = QtWidgets.QGroupBox(self.centralwidget)
-        font = QtGui.QFont()
-        font.setBold(True)
-        self.groupBox_2.setFont(font)
-        self.groupBox_2.setStyleSheet("QGroupBox {\n"
-"    border: 2px solid;\n"
-"    border-color: rgb(255, 161, 46);\n"
-"  border-radius: 5px;\n"
-"    color: #333333;\n"
-"    padding: 10px;\n"
-"    margin: 5px;\n"
-"}\n"
-"\n"
-"QGroupBox::title {\n"
-" subcontrol-position: top center;\n"
-"  background-color:  rgb(255, 161, 46);\n"
-"    subcontrol-origin: margin;\n"
-" color:rgb(255, 255, 255);\n"
-"    font: 14pt \"Arial\";\n"
-"border-radius: 5px;\n"
-"padding-left: 40px;\n"
-"    padding-right: 40px;\n"
-"\n"
-"}\n"
-"QLabel {\n"
-"    color: white;\n"
-"}")
-        self.groupBox_2.setObjectName("groupBox_2")
-        self.gridLayout_5 = QtWidgets.QGridLayout(self.groupBox_2)
-        self.gridLayout_5.setObjectName("gridLayout_5")
-        self.btn_remove = QtWidgets.QPushButton(self.groupBox_2)
-        font = QtGui.QFont()
-        font.setPointSize(-1)
-        font.setBold(True)
-        font.setUnderline(False)
-        font.setStrikeOut(False)
-        self.btn_remove.setFont(font)
-        self.btn_remove.setStyleSheet("background-color: #FF7300;")
-        self.btn_remove.setObjectName("btn_remove")
-        self.gridLayout_5.addWidget(self.btn_remove, 2, 2, 1, 1)
-        self.list_comps = QtWidgets.QListWidget(self.groupBox_2)
-        self.list_comps.setObjectName("list_comps")
-        item = QtWidgets.QListWidgetItem()
-        self.list_comps.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.list_comps.addItem(item)
-        self.gridLayout_5.addWidget(self.list_comps, 0, 0, 1, 3)
-        self.gridLayout_2.addWidget(self.groupBox_2, 17, 0, 1, 4)
+        self.gridLayout_2.addWidget(self.spin__samp_freq, 6, 3, 1, 1)
+        spacerItem2 = QtWidgets.QSpacerItem(20, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.gridLayout_2.addItem(spacerItem2, 2, 0, 1, 1)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
@@ -241,9 +131,15 @@ class Ui_MainWindow(object):
 "}")
         self.label_4.setObjectName("label_4")
         self.horizontalLayout.addWidget(self.label_4)
-        spacerItem4 = QtWidgets.QSpacerItem(50, 19, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem4)
+        self.lbl_samp_freq = QtWidgets.QLabel(self.centralwidget)
+        self.lbl_samp_freq.setObjectName("lbl_samp_freq")
+        self.horizontalLayout.addWidget(self.lbl_samp_freq)
         self.gridLayout_2.addLayout(self.horizontalLayout, 5, 0, 1, 1)
+        self.chk_bx_examp = QtWidgets.QCheckBox(self.centralwidget)
+        self.chk_bx_examp.setObjectName("chk_bx_examp")
+        self.gridLayout_2.addWidget(self.chk_bx_examp, 4, 0, 1, 1)
+        spacerItem3 = QtWidgets.QSpacerItem(20, 50, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.gridLayout_2.addItem(spacerItem3, 4, 3, 1, 1)
         self.groupBox = QtWidgets.QGroupBox(self.centralwidget)
         self.groupBox.setEnabled(True)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
@@ -325,19 +221,6 @@ class Ui_MainWindow(object):
         self.btn_add_comp.setObjectName("btn_add_comp")
         self.gridLayout_4.addWidget(self.btn_add_comp, 4, 1, 1, 1)
         self.gridLayout_2.addWidget(self.groupBox, 0, 3, 1, 1)
-        self.comb_bx_examp = QtWidgets.QComboBox(self.centralwidget)
-        self.comb_bx_examp.setStyleSheet(" border: 1px solid #ccc;\n"
-"border-radius:5px;\n"
-"font-family: Arial, sans-serif;\n"
-"color: black;\n"
-"background-color:rgb(25, 117, 255);\n"
-"")
-        self.comb_bx_examp.setObjectName("comb_bx_examp")
-        self.comb_bx_examp.addItem("")
-        self.comb_bx_examp.addItem("")
-        self.comb_bx_examp.addItem("")
-        self.comb_bx_examp.addItem("")
-        self.gridLayout_2.addWidget(self.comb_bx_examp, 3, 3, 1, 1)
         self.label_9 = QtWidgets.QLabel(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
@@ -354,8 +237,93 @@ class Ui_MainWindow(object):
         self.label_9.setAlignment(QtCore.Qt.AlignCenter)
         self.label_9.setObjectName("label_9")
         self.gridLayout_2.addWidget(self.label_9, 3, 0, 1, 1)
-        spacerItem5 = QtWidgets.QSpacerItem(20, 50, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.gridLayout_2.addItem(spacerItem5, 4, 3, 1, 1)
+        self.gridLayout = QtWidgets.QGridLayout()
+        self.gridLayout.setObjectName("gridLayout")
+        self.btn_import = QtWidgets.QPushButton(self.centralwidget)
+        font = QtGui.QFont()
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        self.btn_import.setFont(font)
+        self.btn_import.setStyleSheet("background-color: #FF7300;")
+        self.btn_import.setObjectName("btn_import")
+        self.gridLayout.addWidget(self.btn_import, 1, 0, 1, 1)
+        self.label_7 = QtWidgets.QLabel(self.centralwidget)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        self.label_7.setFont(font)
+        self.label_7.setStyleSheet("QLabel {\n"
+"    color: white;\n"
+"}\n"
+"")
+        self.label_7.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_7.setObjectName("label_7")
+        self.gridLayout.addWidget(self.label_7, 3, 0, 1, 1)
+        spacerItem4 = QtWidgets.QSpacerItem(20, 9, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.gridLayout.addItem(spacerItem4, 0, 0, 1, 1)
+        self.dial_noise = QtWidgets.QDial(self.centralwidget)
+        self.dial_noise.setObjectName("dial_noise")
+        self.gridLayout.addWidget(self.dial_noise, 2, 0, 1, 1)
+        self.gridLayout_2.addLayout(self.gridLayout, 0, 0, 1, 1)
+        self.comb_bx_examp = QtWidgets.QComboBox(self.centralwidget)
+        self.comb_bx_examp.setStyleSheet(" border: 1px solid #ccc;\n"
+"border-radius:5px;\n"
+"font-family: Arial, sans-serif;\n"
+"color: black;\n"
+"background-color:rgb(25, 117, 255);\n"
+"")
+        self.comb_bx_examp.setObjectName("comb_bx_examp")
+        self.comb_bx_examp.addItem("")
+        self.comb_bx_examp.addItem("")
+        self.comb_bx_examp.addItem("")
+        self.comb_bx_examp.addItem("")
+        self.gridLayout_2.addWidget(self.comb_bx_examp, 3, 3, 1, 1)
+        self.groupBox_2 = QtWidgets.QGroupBox(self.centralwidget)
+        font = QtGui.QFont()
+        font.setBold(True)
+        self.groupBox_2.setFont(font)
+        self.groupBox_2.setStyleSheet("QGroupBox {\n"
+"    border: 2px solid;\n"
+"    border-color: rgb(255, 161, 46);\n"
+"  border-radius: 5px;\n"
+"    color: #333333;\n"
+"    padding: 10px;\n"
+"    margin: 5px;\n"
+"}\n"
+"\n"
+"QGroupBox::title {\n"
+" subcontrol-position: top center;\n"
+"  background-color:  rgb(255, 161, 46);\n"
+"    subcontrol-origin: margin;\n"
+" color:rgb(255, 255, 255);\n"
+"    font: 14pt \"Arial\";\n"
+"border-radius: 5px;\n"
+"padding-left: 40px;\n"
+"    padding-right: 40px;\n"
+"\n"
+"}\n"
+"QLabel {\n"
+"    color: white;\n"
+"}")
+        self.groupBox_2.setObjectName("groupBox_2")
+        self.gridLayout_5 = QtWidgets.QGridLayout(self.groupBox_2)
+        self.gridLayout_5.setObjectName("gridLayout_5")
+        self.btn_remove = QtWidgets.QPushButton(self.groupBox_2)
+        font = QtGui.QFont()
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        self.btn_remove.setFont(font)
+        self.btn_remove.setStyleSheet("background-color: #FF7300;")
+        self.btn_remove.setObjectName("btn_remove")
+        self.gridLayout_5.addWidget(self.btn_remove, 2, 2, 1, 1)
+        self.list_comps = QtWidgets.QListWidget(self.groupBox_2)
+        self.list_comps.setObjectName("list_comps")
+        self.gridLayout_5.addWidget(self.list_comps, 0, 0, 1, 3)
+        self.gridLayout_2.addWidget(self.groupBox_2, 16, 0, 1, 4)
         self.horizontalSlider = QtWidgets.QSlider(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(50)
@@ -386,14 +354,36 @@ class Ui_MainWindow(object):
         self.horizontalSlider.setOrientation(QtCore.Qt.Horizontal)
         self.horizontalSlider.setObjectName("horizontalSlider")
         self.gridLayout_2.addWidget(self.horizontalSlider, 5, 3, 1, 1)
-        self.chk_bx_examp = QtWidgets.QCheckBox(self.centralwidget)
-        self.chk_bx_examp.setObjectName("chk_bx_examp")
-        self.gridLayout_2.addWidget(self.chk_bx_examp, 4, 0, 1, 1)
+        self.btn_sample = QtWidgets.QPushButton(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.btn_sample.sizePolicy().hasHeightForWidth())
+        self.btn_sample.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        self.btn_sample.setFont(font)
+        self.btn_sample.setStyleSheet("background-color: #FF7300;\n"
+"margin-left:100%;\n"
+"margin-right:100%;")
+        self.btn_sample.setObjectName("btn_sample")
+        self.gridLayout_2.addWidget(self.btn_sample, 9, 3, 1, 2)
+        self.label_10 = QtWidgets.QLabel(self.centralwidget)
+        font = QtGui.QFont()
+        font.setBold(True)
+        self.label_10.setFont(font)
+        self.label_10.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_10.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_10.setObjectName("label_10")
+        self.gridLayout_2.addWidget(self.label_10, 6, 0, 1, 1)
         self.gridLayout_3.addLayout(self.gridLayout_2, 0, 3, 3, 1)
-        spacerItem6 = QtWidgets.QSpacerItem(10, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_3.addItem(spacerItem6, 0, 2, 1, 1)
-        spacerItem7 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_3.addItem(spacerItem7, 0, 4, 1, 1)
+        spacerItem5 = QtWidgets.QSpacerItem(10, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_3.addItem(spacerItem5, 0, 2, 1, 1)
+        spacerItem6 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_3.addItem(spacerItem6, 0, 4, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1179, 26))
@@ -415,31 +405,24 @@ class Ui_MainWindow(object):
         self.label_3.setText(_translate("MainWindow", "Calculated Error "))
         self.label_2.setText(_translate("MainWindow", "Reconstructed signal"))
         self.label.setText(_translate("MainWindow", "Original signal"))
-        self.btn_sample.setText(_translate("MainWindow", "Sample"))
-        self.label_11.setText(_translate("MainWindow", "1      2      3     4     5      6     7     8     9        10"))
-        self.btn_import.setText(_translate("MainWindow", "Import"))
-        self.label_7.setText(_translate("MainWindow", "SNR level"))
-        self.label_10.setText(_translate("MainWindow", "For a better control:"))
-        self.groupBox_2.setTitle(_translate("MainWindow", "Mixed Signals"))
-        self.btn_remove.setText(_translate("MainWindow", "Remove"))
-        __sortingEnabled = self.list_comps.isSortingEnabled()
-        self.list_comps.setSortingEnabled(False)
-        item = self.list_comps.item(0)
-        item.setText(_translate("MainWindow", "Signal_1"))
-        item = self.list_comps.item(1)
-        item.setText(_translate("MainWindow", "Signal_2"))
-        self.list_comps.setSortingEnabled(__sortingEnabled)
         self.label_4.setText(_translate("MainWindow", "Sampling range"))
+        self.lbl_samp_freq.setText(_translate("MainWindow", "0fmax"))
+        self.chk_bx_examp.setText(_translate("MainWindow", "show examples"))
         self.groupBox.setTitle(_translate("MainWindow", "Add signal"))
         self.label_6.setText(_translate("MainWindow", "Adjust amplitude"))
         self.label_5.setText(_translate("MainWindow", "Adjust frequency"))
         self.label_8.setText(_translate("MainWindow", "Adjust phase"))
         self.btn_add_comp.setText(_translate("MainWindow", "Add"))
+        self.label_9.setText(_translate("MainWindow", "Ready templates"))
+        self.btn_import.setText(_translate("MainWindow", "Import"))
+        self.label_7.setText(_translate("MainWindow", "SNR level"))
         self.comb_bx_examp.setItemText(0, _translate("MainWindow", "choose example"))
         self.comb_bx_examp.setItemText(1, _translate("MainWindow", "example 1"))
         self.comb_bx_examp.setItemText(2, _translate("MainWindow", "example 2"))
         self.comb_bx_examp.setItemText(3, _translate("MainWindow", "example 3"))
-        self.label_9.setText(_translate("MainWindow", "Ready templates"))
-        self.chk_bx_examp.setText(_translate("MainWindow", "show examples"))
+        self.groupBox_2.setTitle(_translate("MainWindow", "Mixed Signals"))
+        self.btn_remove.setText(_translate("MainWindow", "Remove"))
+        self.btn_sample.setText(_translate("MainWindow", "Sample"))
+        self.label_10.setText(_translate("MainWindow", "For a better control:"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))
 from pyqtgraph import PlotWidget
