@@ -73,7 +73,7 @@ class MyMainWindow(QMainWindow):
         ]
 
         self.orignal_signal = None
-        self.max_ferq = None
+        self.max_freq = 62.5
         
         self.xData = None
         self.yData = None
@@ -134,13 +134,13 @@ class MyMainWindow(QMainWindow):
         
         self.yData = data.values[:, 1]
         self.xData = data.values[:, 0]
-        FTydata = np.fft.fft(self.yData)
-        FTydata = FTydata[0:int(len(self.yData)/2)]
-        FTydata = abs(FTydata)
-        maxpower = max(FTydata)
-        noise = (maxpower/100)
-        self.fmaxtuble = np.where(FTydata > noise)
-        self.max_freq = max(self.fmaxtuble[0])
+        # FTydata = np.fft.fft(self.yData)
+        # FTydata = FTydata[0:int(len(self.yData)/2)]
+        # FTydata = abs(FTydata)
+        # maxpower = max(FTydata)
+        # noise = (maxpower/100)
+        # self.fmaxtuble = np.where(FTydata > noise)
+        # self.max_freq = max(self.fmaxtuble[0])
         print(self.max_freq)
         self.ui.graph_orignal.clear()
         self.orignal_signal = self.ui.graph_orignal.plotItem.plot(self.xData , self.yData , pen="#ffffff")
@@ -173,6 +173,7 @@ class MyMainWindow(QMainWindow):
         # self.update_component_list()        
        
     def plot_example(self):
+        self.ismixed = True
         self.ui.graph_orignal.clear()
         comp_0 = self.signals_components[0]['amplitude'] * np.sin(2 * np.pi * self.signals_components[0]['frequency']  * self.time + self.signals_components[0]['phase'])
         print("ger" , len(comp_0))
@@ -184,12 +185,14 @@ class MyMainWindow(QMainWindow):
 
         if self.ui.comb_bx_examp.currentIndex() == 1:
             signal = comp_0 + comp_1
-            
+            self.mixed_signal = signal
         elif self.ui.comb_bx_examp.currentIndex() == 2:
             signal = comp_2 + comp_3
+            self.mixed_signal = signal
 
         elif self.ui.comb_bx_examp.currentIndex() == 3:
             signal = comp_4 + comp_5
+            self.mixed_signal = signal
            
         self.plot_sine_signal(signal)
         
@@ -201,9 +204,6 @@ class MyMainWindow(QMainWindow):
             self.plot_sine_signal(signal)
         self.ismixed = True
         self.isloaded = False
-        
-
-       
         
     def plot_sine_signal(self , signal):
         self.ui.graph_orignal.clear()
@@ -292,22 +292,30 @@ class MyMainWindow(QMainWindow):
         if self.ismixed:
             #get the sampling frequency 
             if self.isslider:
-                max_frequency = self.signals_components[0]["frequency"]
-                for component in self.signals_components:
+                # max_frequency = self.signals_components[0]["frequency"]
+                # for component in self.signals_components:
+                max_frequency = self.signals_components[6]["frequency"]
+                for component in self.signals_components[6:]:
                     if component["frequency"] > max_frequency:
                         max_frequency = component["frequency"]
+                print(max_frequency)        
                 sampling_frequency = self.ui.horizontalSlider.value() * (max_frequency)
+                print("slider" , sampling_frequency)
                 self.ui.lbl_samp_freq.setText(f"{self.ui.horizontalSlider.value()} fmax")
             if self.isspin:
                 sampling_frequency = self.ui.spin__samp_freq.value()
+                print("spin" , sampling_frequency)
                 
             self.ui.graph_orignal.clear()
             orginal_signal = self.ui.graph_orignal.plot(self.orignal_signal.getData()[0] , self.orignal_signal.getData()[1] ) # dont forget to plot the orignal not only the mixed
             sampling_interval = 1 / sampling_frequency
             x_data, y_data = orginal_signal.getData()  # Get the data from the PlotDataItem
             num_samples = int((x_data[-1] - x_data[0]) / sampling_interval)
-            sampled_signal_x = np.linspace(x_data[0], x_data[-1], num_samples, endpoint=False)
-            sampled_signal_y = resample(y_data, num_samples)
+            
+            sampled_signal_y = resample(self.mixed_signal, num_samples)
+            sampled_signal_x = np.linspace(x_data[0], x_data[-1], len(sampled_signal_y), endpoint=False)
+            
+            
             
             sampled_plot = self.ui.graph_orignal.plot(sampled_signal_x, sampled_signal_y ,  pen=None, symbol='o', symbolSize=7, symbolPen='b', symbolBrush='b')
             reconstructed_data = self.sinc_interp(sampled_signal_x , sampled_signal_y , x_data)
@@ -319,7 +327,29 @@ class MyMainWindow(QMainWindow):
 
         if self.isloaded:
             sampling_rate = self.ui.horizontalSlider.value() * self.max_freq
-
+            
+            
+            
+            
+            
+            # sampling_interval = 1 / sampling_rate
+            # x_data, y_data = self.orignal_signal.getData()  # Get the data from the PlotDataItem
+            # num_samples = int((x_data[-1] - x_data[0]) / sampling_interval)
+            
+            # sampled_y = resample(y_data, num_samples)
+            # sampled_x = np.linspace(x_data[0], x_data[-1], len(sampled_y), endpoint=False)
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
     # Ensure that x and y are NumPy arrays
             x_data, y_data = self.orignal_signal.getData()  # Get the data from the PlotDataItem
             x = np.array(x_data)
