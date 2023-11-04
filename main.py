@@ -218,14 +218,9 @@ class MyMainWindow(QMainWindow):
         x_data_2, y_data_2 = self.ui.graph_recons.plotItem.curves[0].getData()
         difference = np.array(y_data_1) - np.array(y_data_2)
         data_line = self.ui.graph_error.plot(x_data_1, difference, pen='r')  
-        # min_x , max_x , min_y , max_y = self.min_max(data_line)
-        # self.ui.graph_error.plotItem.vb.setLimits( xMin=min_x , xMax=max_x, yMin=-2 , yMax=2) 
-        # self.ui.graph_orignal.getViewBox().autoRange()
+       
         self.edit_graphs()
-        # self.ui.graph_recons.getViewBox().autoRange() 
-        # self.ui.graph_error.setYRange(-5 ,5)
-        # self.ui.graph_error.getViewBox().autoRange() 
-    
+       
     def update_component_list(self):
         '''
         this funcrion is to update the list widget in the ui
