@@ -86,17 +86,17 @@ class MyMainWindow(QMainWindow):
         self.yData = data.values[:, 1]
         self.xData = data.values[:, 0]
         # clear the orignal graph
-        self.ui.graph_orignal.clear()
+        # self.ui.graph_orignal.clear()
         #plot the orignal signal
         self.orignal_signal = self.ui.graph_orignal.plotItem.plot(self.xData , self.yData , pen="#ffffff")
         
         self.ui.graph_orignal.plotItem.vb.setLimits(xMin= np.min(self.xData), xMax=max(self.xData), yMin=min(self.yData) , yMax=max(self.yData))
-        self.ui.graph_orignal.getViewBox().autoRange()
+        # self.ui.graph_orignal.getViewBox().autoRange()
         
         self.isloaded = True
         self.ismixed = False
         #sample the uploaded signal
-        self.max_freq = 62.5
+        # self.max_freq = 62.5
         self.sampling()
 
 
@@ -198,7 +198,7 @@ class MyMainWindow(QMainWindow):
     def edit_graphs(self):
         min_x , max_x , min_y , max_y = self.min_max(self.orignal_signal)
         self.ui.graph_orignal.plotItem.vb.setLimits( xMin=min_x , xMax=max_x, yMin=min_y , yMax=max_y) 
-        self.ui.graph_recons.plotItem.vb.setLimits( xMin=min_x , xMax=max_x, yMin=min_y , yMax=max_y)
+        self.ui.graph_recons.plotItem.vb.setLimits( xMin=min_x , xMax=max_x, yMin=min_y-2 , yMax=max_y+2)
         self.ui.graph_recons.setYRange( min_y , max_y)
         self.ui.graph_error.plotItem.vb.setLimits( xMin=min_x , xMax=max_x, yMin=min_y - 2 , yMax=max_y + 2) 
         if self.isloaded:
@@ -206,7 +206,7 @@ class MyMainWindow(QMainWindow):
         
         self.ui.graph_orignal.getViewBox().autoRange()
         self.ui.graph_error.getViewBox().autoRange()
-        # self.ui.graph_recons.getViewBox().autoRange()
+        self.ui.graph_recons.getViewBox().autoRange()
 
 
 
