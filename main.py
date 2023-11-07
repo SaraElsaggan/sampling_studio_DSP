@@ -25,6 +25,7 @@ class MyMainWindow(QMainWindow):
         self.time = np.linspace(0, 2 , 1000)
         self.signals_components = []
 
+        self.plotted_orignal_signal = None
         self.orignal_signal = None
         self.max_freq = None
         
@@ -45,7 +46,7 @@ class MyMainWindow(QMainWindow):
         self.ui.dial_noise.setMaximum(10)
         self.ui.dial_noise.valueChanged.connect(self.add_noise_try)
         self.ui.horizontalSlider.valueChanged.connect(self.input_freq_slider)
-        self.ui.spin__samp_freq.editingFinished.connect(self.input_freq_spin)
+        self.ui.lineEdit.editingFinished.connect(self.input_freq_spin)
         self.ui.btn_import.clicked.connect(self.load_signal)
         self.ui.btn_add_comp.clicked.connect(self.create_signal_component)
         self.ui.btn_remove.clicked.connect(self.remove_component)
@@ -63,6 +64,9 @@ class MyMainWindow(QMainWindow):
         self.example_2 = np.sin(2 * np.pi * 5  * self.time ) +2 * np.sin(2 * np.pi * 3  * self.time)
         self.example_3 =2 *np.sin(2 * np.pi * 4  * self.time ) +  np.sin(2 * np.pi * 1 * self.time) + np.sin(2* np.pi * 3 * self.time)
 
+
+   
+   
    
     def clear_graphs(self):
         self.ui.graph_error.clear()
@@ -88,7 +92,7 @@ class MyMainWindow(QMainWindow):
         # clear the orignal graph
         # self.ui.graph_orignal.clear()
         #plot the orignal signal
-        self.orignal_signal = self.ui.graph_orignal.plotItem.plot(self.xData , self.yData , pen="#ffffff")
+        self.plotted_orignal_signal = self.ui.graph_orignal.plotItem.plot(self.xData , self.yData , pen="#ffffff")
         
         self.ui.graph_orignal.plotItem.vb.setLimits(xMin= np.min(self.xData), xMax=max(self.xData), yMin=min(self.yData) , yMax=max(self.yData))
         # self.ui.graph_orignal.getViewBox().autoRange()
@@ -98,7 +102,6 @@ class MyMainWindow(QMainWindow):
         #sample the uploaded signal
         # self.max_freq = 62.5
         self.sampling()
-
 
     def create_signal_component(self):
         '''
@@ -142,7 +145,9 @@ class MyMainWindow(QMainWindow):
         elif self.ui.comb_bx_examp.currentIndex() == 3:
             self.max_freq = 4
             self.mixed_signal = self.example_3
-           
+        
+        self.yData = self.mixed_signal
+
         self.plot_sine_signal(self.mixed_signal)
         
     def mix_components(self):
@@ -158,7 +163,7 @@ class MyMainWindow(QMainWindow):
                 signal += add_comp
                 if component["frequency"] > self.max_freq:
                     self.max_freq = component["frequency"]
-        
+            self.yData = signal
             self.ismixed = True
             self.isloaded = False
             self.plot_sine_signal(signal)
@@ -170,17 +175,15 @@ class MyMainWindow(QMainWindow):
         self.mixed_signal = signal
             
         self.ui.graph_orignal.clear()
-        self.orignal_signal = self.ui.graph_orignal.plot( self.time , signal) 
+        self.plotted_orignal_signal = self.ui.graph_orignal.plot( self.time , signal) 
         
        
         #set limits of the graph
-        min_x , max_x , min_y , max_y = self.min_max(self.orignal_signal)
+        min_x , max_x , min_y , max_y = self.min_max(self.plotted_orignal_signal)
         self.ui.graph_orignal.plotItem.vb.setLimits( xMin=min_x , xMax=max_x, yMin=min_y , yMax=max_y)  
         self.ui.graph_orignal.getViewBox().autoRange()
         
         self.sampling()
-
-
 
     def min_max(self, graph):
         '''
@@ -194,12 +197,14 @@ class MyMainWindow(QMainWindow):
         max_y =  max(graph.getData()[1])
         return min_x  , max_x , min_y , max_y
         
+        
+    
+    
     
     def edit_graphs(self):
-        min_x , max_x , min_y , max_y = self.min_max(self.orignal_signal)
+        min_x , max_x , min_y , max_y = self.min_max(self.plotted_orignal_signal)
         self.ui.graph_orignal.plotItem.vb.setLimits( xMin=min_x , xMax=max_x, yMin=min_y , yMax=max_y) 
-        self.ui.graph_recons.plotItem.vb.setLimits( xMin=min_x , xMax=max_x, yMin=min_y-2 , yMax=max_y+2)
-        self.ui.graph_recons.setYRange( min_y , max_y)
+        self.ui.graph_recons.plotItem.vb.setLimits( xMin=min_x , xMax=max_x, yMin=min_y , yMax=max_y)
         self.ui.graph_error.plotItem.vb.setLimits( xMin=min_x , xMax=max_x, yMin=min_y - 2 , yMax=max_y + 2) 
         if self.isloaded:
             self.ui.graph_error.plotItem.vb.setLimits( xMin=min_x , xMax=max_x, yMin=-1 , yMax=1) 
@@ -207,8 +212,8 @@ class MyMainWindow(QMainWindow):
         self.ui.graph_orignal.getViewBox().autoRange()
         self.ui.graph_error.getViewBox().autoRange()
         self.ui.graph_recons.getViewBox().autoRange()
-
-
+        # self.ui.graph_recons.setYRange( min_y-2 , max_y+2)
+        self.ui.graph_error.setYRange( min_y-1 , max_y+2)
 
     
     def plot_difference_between_graphs(self):
@@ -216,7 +221,9 @@ class MyMainWindow(QMainWindow):
         self.ui.graph_error.clear()
         x_data_1, y_data_1 = self.ui.graph_orignal.plotItem.curves[0].getData()
         x_data_2, y_data_2 = self.ui.graph_recons.plotItem.curves[0].getData()
-        difference = np.array(y_data_1) - np.array(y_data_2)
+        # difference = np.array(self.mixed_signal) - np.array(y_data_2)
+        difference = np.array(self.yData) - np.array(y_data_2)
+        # difference = np.array(y_data_1) - np.array(y_data_2)
         data_line = self.ui.graph_error.plot(x_data_1, difference, pen='r')  
        
         self.edit_graphs()
@@ -249,15 +256,15 @@ class MyMainWindow(QMainWindow):
         self.ui.graph_orignal.clear()
         
         if self.isloaded:
-            y_with_noise = [value + np.random.uniform(-snr_level, snr_level) for value in self.yData]
+            self.y_with_noise = [value + np.random.uniform(-snr_level, snr_level) for value in self.yData]
             
-            self.orignal_signal = self.ui.graph_orignal.plot(self.xData  ,y_with_noise  )
+            self.plotted_orignal_signal = self.ui.graph_orignal.plot(self.xData  ,self.y_with_noise  )
         
         if self.ismixed:
             
             noise = np.random.normal(0, snr_level, len(self.time))
             self.mixed_signal_with_noise = self.mixed_signal + noise
-            self.orignal_signal = self.ui.graph_orignal.plot(self.time , self.mixed_signal_with_noise )
+            self.plotted_orignal_signal = self.ui.graph_orignal.plot(self.time , self.mixed_signal_with_noise )
             
         self.sampling()
 
@@ -270,8 +277,8 @@ class MyMainWindow(QMainWindow):
             self.ui.lbl_samp_freq.setText(f"{self.ui.horizontalSlider.value()} fmax")
             self.ui.lbl_samp_freq.setText(f"{self.ui.horizontalSlider.value()} fmax")
         elif self.isspin:
-            sampling_frequency = self.ui.spin__samp_freq.value()
-        
+            sampling_frequency = float(self.ui.lineEdit.text())
+
         self.ui.lbl_fmax.setText(f"{self.max_freq}")
         self.ui.lbl_samp_freq_abs.setText(f"{sampling_frequency}")
         
@@ -286,8 +293,8 @@ class MyMainWindow(QMainWindow):
         if self.ismixed:    
             sampling_frequency = self.get_sampling_freq()
 
-            self.ui.graph_orignal.plot(self.orignal_signal.getData()[0] , self.orignal_signal.getData()[1] ) 
-            x_data, y_data = self.orignal_signal.getData()  # Get the data from the PlotDataItem
+            self.ui.graph_orignal.plot(self.plotted_orignal_signal.getData()[0] , self.plotted_orignal_signal.getData()[1] ) 
+            x_data, y_data = self.plotted_orignal_signal.getData()  # Get the data from the PlotDataItem
 
             sampling_interval = 1 / sampling_frequency
             num_samples = int((x_data[-1] - x_data[0]) / sampling_interval)
@@ -295,10 +302,10 @@ class MyMainWindow(QMainWindow):
             
             
             sampled_signal_x = np.linspace(min(x_data), max(x_data), num_samples ,endpoint=False)
-            sampled_signal_y = np.interp(sampled_signal_x, x_data, y_data)
             
+            # sampled_signal_y , _ = resample(y_data, num_samples ,x_data )
+            sampled_signal_y = np.interp(sampled_signal_x, x_data, y_data)
             # print("sss" , int(sampling_frequency))
-            # # sampled_signal_y , _ = resample(y_data, num_samples ,x_data )
             # sampled_signal_y , _ = resample(y_data, int(sampling_frequency) ,x_data )
             # print(len(sampled_signal_y))
             # sampled_signal_x = np.arange(x_data[0], x_data[-1], sampling_interval)
@@ -319,7 +326,7 @@ class MyMainWindow(QMainWindow):
             
         if self.isloaded:
             # Ensure that x and y are NumPy arrays
-            x_data, y_data = self.orignal_signal.getData()  # Get the data from the PlotDataItem
+            x_data, y_data = self.plotted_orignal_signal.getData()  # Get the data from the PlotDataItem
             x = np.array(x_data)
             y = np.array(y_data)
             self.max_freq = 1/(x_data[1] - x_data[0])/2
@@ -336,7 +343,7 @@ class MyMainWindow(QMainWindow):
             f = interp1d(x_data, y_data, kind='linear')
             sampled_y = f(sampled_x)
 
-            orginal_signal = self.ui.graph_orignal.plot(self.orignal_signal.getData()[0] , self.orignal_signal.getData()[1] ) # dont forget to plot the orignal not only the mixed
+            orginal_signal = self.ui.graph_orignal.plot(self.plotted_orignal_signal.getData()[0] , self.plotted_orignal_signal.getData()[1] ) # dont forget to plot the orignal not only the mixed
         
             
             

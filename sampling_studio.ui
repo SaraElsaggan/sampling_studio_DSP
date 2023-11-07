@@ -6,19 +6,39 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1388</width>
-    <height>838</height>
+    <width>1573</width>
+    <height>743</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+    <horstretch>10</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>743</height>
+   </size>
+  </property>
+  <property name="font">
+   <font>
+    <underline>false</underline>
+   </font>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="layoutDirection">
+   <enum>Qt::LeftToRight</enum>
   </property>
   <property name="styleSheet">
    <string notr="true">QPushButton {
   background-color: #FF7300;
   color: white;
   border: none;
-  padding: 10px 20px;
+
   text-align: center;
   text-decoration: none;
   font-size: 16px;
@@ -43,28 +63,28 @@ background-color: #676767;
    </property>
    <layout class="QGridLayout" name="gridLayout_3">
     <item row="0" column="0">
-     <widget class="QLabel" name="label">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QLabel {
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {
     color: white;
 }</string>
-      </property>
-      <property name="text">
-       <string>Original signal</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1" rowspan="4">
-     <layout class="QVBoxLayout" name="verticalLayout">
+        </property>
+        <property name="text">
+         <string>Original signal</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
       <item>
        <widget class="PlotWidget" name="graph_orignal">
         <property name="styleSheet">
@@ -87,6 +107,27 @@ background-color: #676767;
          </size>
         </property>
        </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+    color: white;
+}</string>
+        </property>
+        <property name="text">
+         <string>Reconstructed signal</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="PlotWidget" name="graph_recons">
@@ -129,211 +170,193 @@ QPlotGraph:hover {
        </spacer>
       </item>
       <item>
+       <widget class="QLabel" name="label_3">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+    color: white;
+}</string>
+        </property>
+        <property name="text">
+         <string>Calculated Error </string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="PlotWidget" name="graph_error"/>
       </item>
      </layout>
     </item>
-    <item row="0" column="3" rowspan="4">
-     <layout class="QGridLayout" name="gridLayout_2">
-      <item row="6" column="2">
-       <widget class="QDoubleSpinBox" name="spin__samp_freq"/>
-      </item>
-      <item row="7" column="0">
-       <widget class="QLabel" name="label_13">
-        <property name="font">
-         <font>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: rgb(255, 255, 255);</string>
-        </property>
-        <property name="text">
-         <string>Fmax</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2">
-       <widget class="QGroupBox" name="groupBox">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>10</pointsize>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QGroupBox {
-    border: 2px solid;
-	border-color: rgb(255, 161, 46);
-  border-radius: 5px;
-    color: #333333;
-    padding: 10px;
-    margin: 5px;
-}
-
-QGroupBox::title {
- subcontrol-position: top center;
-  background-color:  rgb(255, 161, 46);
-    subcontrol-origin: margin;
- color:rgb(255, 255, 255);
-    font: 14pt &quot;Arial&quot;;
-border-radius: 5px;
-padding-left: 40px;
-    padding-right: 40px;
-
-}
-QLabel {
+    <item row="0" column="1">
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="0" column="2">
+     <layout class="QGridLayout" name="gridLayout_5">
+      <item row="0" column="0">
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="5" column="0">
+           <widget class="QPushButton" name="btn_clear">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>-1</pointsize>
+              <bold>true</bold>
+              <underline>false</underline>
+              <strikeout>false</strikeout>
+             </font>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::RightToLeft</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: #FF7300;</string>
+            </property>
+            <property name="text">
+             <string>Clear graphs</string>
+            </property>
+            <property name="autoDefault">
+             <bool>true</bool>
+            </property>
+            <property name="default">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_7">
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {
     color: white;
 }
 </string>
-        </property>
-        <property name="title">
-         <string>Add signal</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_4">
-         <item row="1" column="0">
-          <widget class="QLabel" name="label_6">
-           <property name="font">
-            <font>
-             <pointsize>8</pointsize>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Adjust amplitude</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_8">
-           <property name="font">
-            <font>
-             <pointsize>8</pointsize>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Adjust phase</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="1">
-          <widget class="QPushButton" name="btn_add_comp">
-           <property name="font">
-            <font>
-             <pointsize>-1</pointsize>
-             <bold>true</bold>
-             <underline>false</underline>
-             <strikeout>false</strikeout>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">background-color: #FF7300;</string>
-           </property>
-           <property name="text">
-            <string>Add</string>
-           </property>
-           <property name="autoDefault">
-            <bool>true</bool>
-           </property>
-           <property name="default">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0">
-          <widget class="QLabel" name="label_5">
-           <property name="font">
-            <font>
-             <pointsize>8</pointsize>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
-           <property name="text">
-            <string>Adjust frequency</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QDoubleSpinBox" name="spin_freq"/>
-         </item>
-         <item row="1" column="1">
-          <widget class="QDoubleSpinBox" name="spin_amp"/>
-         </item>
-         <item row="2" column="1">
-          <widget class="QDoubleSpinBox" name="spin_phase"/>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item row="7" column="2">
-       <widget class="QLabel" name="lbl_fmax">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="0">
-       <widget class="QLabel" name="label_11">
-        <property name="font">
-         <font>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: rgb(255, 255, 255);</string>
-        </property>
-        <property name="text">
-         <string>sampling frequency</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <layout class="QGridLayout" name="gridLayout">
-        <item row="1" column="0">
-         <widget class="QPushButton" name="btn_import">
-          <property name="font">
-           <font>
-            <pointsize>-1</pointsize>
-            <bold>true</bold>
-            <underline>false</underline>
-            <strikeout>false</strikeout>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: #FF7300;</string>
-          </property>
-          <property name="text">
-           <string>Import</string>
-          </property>
-         </widget>
+            </property>
+            <property name="text">
+             <string>SNR level</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <spacer name="verticalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>250</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="2" column="0">
+           <widget class="QDial" name="dial_noise">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>200</horstretch>
+              <verstretch>200</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="sizeIncrement">
+             <size>
+              <width>500</width>
+              <height>500</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <spacer name="verticalSpacer_6">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>9</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="1" column="0">
+           <widget class="QPushButton" name="btn_import">
+            <property name="font">
+             <font>
+              <pointsize>-1</pointsize>
+              <bold>true</bold>
+              <underline>false</underline>
+              <strikeout>false</strikeout>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: #FF7300;</string>
+            </property>
+            <property name="text">
+             <string>Import</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
-        <item row="3" column="0">
-         <widget class="QLabel" name="label_7">
+        <item row="0" column="1" colspan="2">
+         <widget class="QGroupBox" name="groupBox">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
           <property name="font">
            <font>
             <pointsize>10</pointsize>
@@ -341,65 +364,7 @@ QLabel {
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QLabel {
-    color: white;
-}
-</string>
-          </property>
-          <property name="text">
-           <string>SNR level</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <spacer name="verticalSpacer_6">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Fixed</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>9</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="2" column="0">
-         <widget class="QDial" name="dial_noise"/>
-        </item>
-       </layout>
-      </item>
-      <item row="9" column="2">
-       <spacer name="verticalSpacer_4">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Minimum</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="15" column="0" colspan="3">
-       <widget class="QGroupBox" name="groupBox_2">
-        <property name="font">
-         <font>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QGroupBox {
+           <string notr="true">QGroupBox {
     border: 2px solid;
 	border-color: rgb(255, 161, 46);
   border-radius: 5px;
@@ -421,180 +386,271 @@ padding-left: 40px;
 }
 QLabel {
     color: white;
-}</string>
-        </property>
-        <property name="title">
-         <string>Mixed Signals</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_5">
-         <item row="2" column="2">
-          <widget class="QPushButton" name="btn_remove">
-           <property name="font">
-            <font>
-             <pointsize>-1</pointsize>
-             <bold>true</bold>
-             <underline>false</underline>
-             <strikeout>false</strikeout>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">background-color: #FF7300;</string>
-           </property>
-           <property name="text">
-            <string>Remove</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0" colspan="3">
-          <widget class="QListWidget" name="list_comps"/>
-         </item>
-         <item row="2" column="0">
-          <widget class="QPushButton" name="btn_mixed_plot">
-           <property name="font">
-            <font>
-             <pointsize>-1</pointsize>
-             <bold>true</bold>
-             <underline>false</underline>
-             <strikeout>false</strikeout>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">background-color: #FF7300;</string>
-           </property>
-           <property name="text">
-            <string>plot</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item row="4" column="2">
-       <spacer name="verticalSpacer_7">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>50</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_9">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>10</pointsize>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color:rgb(255, 255, 255);
+}
+</string>
+          </property>
+          <property name="title">
+           <string>Add signal</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_4">
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_6">
+             <property name="font">
+              <font>
+               <pointsize>8</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Adjust amplitude</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QDoubleSpinBox" name="spin_phase"/>
+           </item>
+           <item row="1" column="1">
+            <widget class="QDoubleSpinBox" name="spin_amp"/>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_5">
+             <property name="font">
+              <font>
+               <pointsize>8</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text">
+              <string>Adjust frequency</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QPushButton" name="btn_add_comp">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>-1</pointsize>
+               <bold>true</bold>
+               <underline>false</underline>
+               <strikeout>false</strikeout>
+              </font>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::RightToLeft</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: #FF7300;</string>
+             </property>
+             <property name="text">
+              <string>Add</string>
+             </property>
+             <property name="autoDefault">
+              <bool>true</bool>
+             </property>
+             <property name="default">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QDoubleSpinBox" name="spin_freq"/>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="label_9">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color:rgb(255, 255, 255);
 border: 2px solid  rgb(255, 170, 0);
 border-radius:8px;</string>
-        </property>
-        <property name="text">
-         <string>Ready templates</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0">
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <widget class="QLabel" name="label_4">
-          <property name="font">
-           <font>
-            <pointsize>11</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel {
-    color: white;
-}</string>
-          </property>
-          <property name="text">
-           <string>Sampling range</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lbl_samp_freq">
-          <property name="text">
-           <string>1fmax</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="8" column="2">
-       <widget class="QLabel" name="lbl_samp_freq_abs">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="2">
-       <widget class="QComboBox" name="comb_bx_examp">
-        <property name="styleSheet">
-         <string notr="true"> border: 1px solid #ccc;
+             </property>
+             <property name="text">
+              <string>Ready templates</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QComboBox" name="comb_bx_examp">
+             <property name="styleSheet">
+              <string notr="true"> border: 1px solid #ccc;
 border-radius:5px;
 font-family: Arial, sans-serif;
 color: black;
 background-color:rgb(25, 117, 255);
 </string>
-        </property>
-        <item>
-         <property name="text">
-          <string>choose example</string>
-         </property>
+             </property>
+             <item>
+              <property name="text">
+               <string>choose example</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>example 1 : sin(2πx (6) ) +sin(2πx(2))</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>example 2 : sin(2πx (5)) + 2sin(2πx(3))</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>example 1 : 2sin(2πx (4) ) + sin(2πx(1)) + sin(2πx(3)) </string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_8">
+             <property name="font">
+              <font>
+               <pointsize>8</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Adjust phase</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0" colspan="2">
+            <widget class="QGroupBox" name="groupBox_3">
+             <property name="styleSheet">
+              <string notr="true">QGroupBox {
+    border: 2px solid;
+	border-color: rgb(255, 161, 46);
+  border-radius: 5px;
+    color: #333333;
+    padding: 10px;
+
+
+}
+
+QGroupBox::title {
+ subcontrol-position: top center;
+  background-color:  rgb(255, 161, 46);
+    subcontrol-origin: margin;
+ color:rgb(255, 255, 255);
+    font: 14pt &quot;Arial&quot;;
+border-radius: 5px;
+padding-left: 40px;
+    padding-right: 40px;
+
+}
+QLabel {
+    color: white;
+}</string>
+             </property>
+             <property name="title">
+              <string>Mixed signals</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_2">
+              <item>
+               <widget class="QListWidget" name="list_comps">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_remove">
+                <property name="font">
+                 <font>
+                  <pointsize>-1</pointsize>
+                  <bold>true</bold>
+                  <underline>false</underline>
+                  <strikeout>false</strikeout>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #FF7300;</string>
+                </property>
+                <property name="text">
+                 <string>Remove</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_mixed_plot">
+                <property name="font">
+                 <font>
+                  <pointsize>-1</pointsize>
+                  <bold>true</bold>
+                  <underline>false</underline>
+                  <strikeout>false</strikeout>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #FF7300;</string>
+                </property>
+                <property name="text">
+                 <string>plot</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
         </item>
-        <item>
-         <property name="text">
-          <string>example 1 : sin(2πx (6) ) +sin(2πx(2))</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>example 2 : sin(2πx (5)) + 2sin(2πx(3))</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>example 1 : 2sin(2πx (4) ) + sin(2πx(1)) + sin(2πx(3)) </string>
-         </property>
-        </item>
-       </widget>
+       </layout>
       </item>
-      <item row="5" column="2">
-       <widget class="QSlider" name="horizontalSlider">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-          <horstretch>50</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>10</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QSlider {
+      <item row="3" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QLabel" name="lbl_samp_freq">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>1fmax</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSlider" name="horizontalSlider">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+            <horstretch>10</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QSlider {
     border: 1px solid #000;
     background: #EEE;
 border-radius:5px;
@@ -612,139 +668,149 @@ QSlider::groove {
 
 }
 </string>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+          <bold>true</bold>
+          <underline>false</underline>
+         </font>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+    color: white;
+}</string>
+        </property>
+        <property name="text">
+         <string>Sampling range</string>
         </property>
        </widget>
       </item>
       <item row="6" column="0">
-       <widget class="QLabel" name="label_10">
-        <property name="font">
-         <font>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: rgb(255, 255, 255);</string>
-        </property>
-        <property name="text">
-         <string>For a better control:</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <widget class="QLabel" name="label_13">
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 255, 255);</string>
+              </property>
+              <property name="text">
+               <string>Fmax</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="lbl_fmax">
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <widget class="QLabel" name="label_11">
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 255, 255);</string>
+              </property>
+              <property name="text">
+               <string>sampling frequency</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="lbl_samp_freq_abs">
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>300</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
       </item>
-      <item row="2" column="0">
-       <spacer name="verticalSpacer_3">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
+      <item row="5" column="0">
+       <widget class="QLineEdit" name="lineEdit">
+        <property name="enabled">
+         <bool>true</bool>
         </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>13</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="9" column="0">
-       <widget class="QPushButton" name="btn_clear">
-        <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-          <bold>true</bold>
-          <underline>false</underline>
-          <strikeout>false</strikeout>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: #FF7300;</string>
-        </property>
-        <property name="text">
-         <string>clear graphs</string>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
        </widget>
       </item>
      </layout>
-    </item>
-    <item row="1" column="2">
-     <spacer name="horizontalSpacer_2">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Fixed</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>10</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="1" column="4">
-     <spacer name="horizontalSpacer_3">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Fixed</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="2" column="0">
-     <widget class="QLabel" name="label_2">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QLabel {
-    color: white;
-}</string>
-      </property>
-      <property name="text">
-       <string>Reconstructed signal</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="0">
-     <widget class="QLabel" name="label_3">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QLabel {
-    color: white;
-}</string>
-      </property>
-      <property name="text">
-       <string>Calculated Error </string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
     </item>
    </layout>
   </widget>
@@ -753,7 +819,7 @@ QSlider::groove {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1388</width>
+     <width>1573</width>
      <height>26</height>
     </rect>
    </property>
@@ -764,7 +830,6 @@ QSlider::groove {
    </widget>
    <addaction name="menuFile"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <customwidgets>
   <customwidget>
@@ -778,14 +843,15 @@ QSlider::groove {
   <tabstop>spin_amp</tabstop>
   <tabstop>spin_phase</tabstop>
   <tabstop>btn_add_comp</tabstop>
-  <tabstop>horizontalSlider</tabstop>
-  <tabstop>spin__samp_freq</tabstop>
   <tabstop>comb_bx_examp</tabstop>
-  <tabstop>btn_import</tabstop>
-  <tabstop>dial_noise</tabstop>
   <tabstop>list_comps</tabstop>
   <tabstop>btn_remove</tabstop>
   <tabstop>btn_mixed_plot</tabstop>
+  <tabstop>btn_import</tabstop>
+  <tabstop>dial_noise</tabstop>
+  <tabstop>btn_clear</tabstop>
+  <tabstop>horizontalSlider</tabstop>
+  <tabstop>lineEdit</tabstop>
   <tabstop>graph_orignal</tabstop>
   <tabstop>graph_recons</tabstop>
   <tabstop>graph_error</tabstop>
