@@ -40,7 +40,7 @@ class MyMainWindow(QMainWindow):
         self.isloaded= False
         
         self.ui.horizontalSlider.setMinimum(1)
-        self.ui.horizontalSlider.setMaximum(10)
+        self.ui.horizontalSlider.setMaximum(4)
         
         self.ui.dial_noise.setMinimum(0)
         self.ui.dial_noise.setMaximum(10)
@@ -50,6 +50,8 @@ class MyMainWindow(QMainWindow):
         self.ui.btn_import.clicked.connect(self.load_signal)
         self.ui.btn_add_comp.clicked.connect(self.create_signal_component)
         self.ui.btn_remove.clicked.connect(self.remove_component)
+        
+    
         
         self.ui.btn_mixed_plot.clicked.connect(self.mix_components)
         
@@ -274,13 +276,13 @@ class MyMainWindow(QMainWindow):
         '''
         if self.isslider:
             sampling_frequency = self.ui.horizontalSlider.value() * (self.max_freq)
-            self.ui.lbl_samp_freq.setText(f"{self.ui.horizontalSlider.value()} fmax")
-            self.ui.lbl_samp_freq.setText(f"{self.ui.horizontalSlider.value()} fmax")
+            # self.ui.lbl_samp_freq.setText(f"{self.ui.horizontalSlider.value()} fmax")
+            # self.ui.lbl_samp_freq.setText(f"{self.ui.horizontalSlider.value()} fmax")
         elif self.isspin:
             sampling_frequency = float(self.ui.lineEdit.text())
 
-        self.ui.lbl_fmax.setText(f"{self.max_freq}")
-        self.ui.lbl_samp_freq_abs.setText(f"{sampling_frequency}")
+        # self.ui.lbl_fmax.setText(f"{self.max_freq}")
+        # self.ui.lbl_samp_freq_abs.setText(f"{sampling_frequency}")
         
         return(sampling_frequency)
     
