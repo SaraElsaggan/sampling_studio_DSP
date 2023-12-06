@@ -52,76 +52,8 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout_3 = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout_3.setObjectName("gridLayout_3")
-        self.verticalLayout = QtWidgets.QVBoxLayout()
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        font.setBold(True)
-        self.label.setFont(font)
-        self.label.setStyleSheet("QLabel {\n"
-"    color: white;\n"
-"}")
-        self.label.setAlignment(QtCore.Qt.AlignCenter)
-        self.label.setObjectName("label")
-        self.verticalLayout.addWidget(self.label)
-        self.graph_orignal = PlotWidget(self.centralwidget)
-        self.graph_orignal.setStyleSheet("")
-        self.graph_orignal.setObjectName("graph_orignal")
-        self.verticalLayout.addWidget(self.graph_orignal)
-        spacerItem = QtWidgets.QSpacerItem(20, 1, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
-        self.verticalLayout.addItem(spacerItem)
-        self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        font.setBold(True)
-        self.label_2.setFont(font)
-        self.label_2.setStyleSheet("QLabel {\n"
-"    color: white;\n"
-"}")
-        self.label_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_2.setObjectName("label_2")
-        self.verticalLayout.addWidget(self.label_2)
-        self.graph_recons = PlotWidget(self.centralwidget)
-        self.graph_recons.setStyleSheet("QPlotGraph {\n"
-"  background-color: #3498db;\n"
-"  color: white;\n"
-"  border: none;\n"
-"  padding: 10px 20px;\n"
-"  text-align: center;\n"
-"  text-decoration: none;\n"
-"  font-size: 16px;\n"
-"  margin: 4px 2px;\n"
-"  cursor: pointer;\n"
-"  border-radius: 5px;\n"
-"}\n"
-"\n"
-"QPlotGraph:hover {\n"
-"  background-color: #192639;\n"
-"  color: #eee;\n"
-"}\n"
-"")
-        self.graph_recons.setObjectName("graph_recons")
-        self.verticalLayout.addWidget(self.graph_recons)
-        spacerItem1 = QtWidgets.QSpacerItem(20, 1, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
-        self.verticalLayout.addItem(spacerItem1)
-        self.label_3 = QtWidgets.QLabel(self.centralwidget)
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        font.setBold(True)
-        self.label_3.setFont(font)
-        self.label_3.setStyleSheet("QLabel {\n"
-"    color: white;\n"
-"}")
-        self.label_3.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_3.setObjectName("label_3")
-        self.verticalLayout.addWidget(self.label_3)
-        self.graph_error = PlotWidget(self.centralwidget)
-        self.graph_error.setObjectName("graph_error")
-        self.verticalLayout.addWidget(self.graph_error)
-        self.gridLayout_3.addLayout(self.verticalLayout, 0, 0, 1, 1)
-        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_3.addItem(spacerItem2, 0, 1, 1, 1)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_3.addItem(spacerItem, 0, 1, 1, 1)
         self.gridLayout_5 = QtWidgets.QGridLayout()
         self.gridLayout_5.setObjectName("gridLayout_5")
         self.gridLayout_2 = QtWidgets.QGridLayout()
@@ -158,8 +90,8 @@ class Ui_MainWindow(object):
         self.label_7.setAlignment(QtCore.Qt.AlignCenter)
         self.label_7.setObjectName("label_7")
         self.gridLayout.addWidget(self.label_7, 4, 0, 1, 1)
-        spacerItem3 = QtWidgets.QSpacerItem(20, 250, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.gridLayout.addItem(spacerItem3, 6, 0, 1, 1)
+        spacerItem1 = QtWidgets.QSpacerItem(20, 250, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.gridLayout.addItem(spacerItem1, 6, 0, 1, 1)
         self.dial_noise = QtWidgets.QDial(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(200)
@@ -169,8 +101,8 @@ class Ui_MainWindow(object):
         self.dial_noise.setSizeIncrement(QtCore.QSize(500, 500))
         self.dial_noise.setObjectName("dial_noise")
         self.gridLayout.addWidget(self.dial_noise, 2, 0, 1, 1)
-        spacerItem4 = QtWidgets.QSpacerItem(20, 9, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.gridLayout.addItem(spacerItem4, 0, 0, 1, 1)
+        spacerItem2 = QtWidgets.QSpacerItem(20, 9, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.gridLayout.addItem(spacerItem2, 0, 0, 1, 1)
         self.btn_import = QtWidgets.QPushButton(self.centralwidget)
         font = QtGui.QFont()
         font.setPointSize(-1)
@@ -358,6 +290,23 @@ class Ui_MainWindow(object):
         self.gridLayout_4.addWidget(self.groupBox_3, 5, 0, 1, 2)
         self.gridLayout_2.addWidget(self.groupBox, 0, 1, 1, 2)
         self.gridLayout_5.addLayout(self.gridLayout_2, 0, 0, 1, 1)
+        self.label_4 = QtWidgets.QLabel(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_4.sizePolicy().hasHeightForWidth())
+        self.label_4.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setUnderline(False)
+        self.label_4.setFont(font)
+        self.label_4.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.label_4.setStyleSheet("QLabel {\n"
+"    color: white;\n"
+"}")
+        self.label_4.setObjectName("label_4")
+        self.gridLayout_5.addWidget(self.label_4, 1, 0, 1, 1)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.lbl_samp_freq = QtWidgets.QLabel(self.centralwidget)
@@ -396,39 +345,92 @@ class Ui_MainWindow(object):
         self.horizontalSlider.setOrientation(QtCore.Qt.Horizontal)
         self.horizontalSlider.setObjectName("horizontalSlider")
         self.horizontalLayout_2.addWidget(self.horizontalSlider)
-        self.gridLayout_5.addLayout(self.horizontalLayout_2, 3, 0, 1, 1)
-        self.label_4 = QtWidgets.QLabel(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_4.sizePolicy().hasHeightForWidth())
-        self.label_4.setSizePolicy(sizePolicy)
+        self.btn_switch = QtWidgets.QPushButton(self.centralwidget)
         font = QtGui.QFont()
-        font.setPointSize(11)
+        font.setPointSize(-1)
         font.setBold(True)
         font.setUnderline(False)
-        self.label_4.setFont(font)
-        self.label_4.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.label_4.setStyleSheet("QLabel {\n"
-"    color: white;\n"
-"}")
-        self.label_4.setObjectName("label_4")
-        self.gridLayout_5.addWidget(self.label_4, 1, 0, 1, 1)
+        font.setStrikeOut(False)
+        self.btn_switch.setFont(font)
+        self.btn_switch.setStyleSheet("background-color: #FF7300;\n"
+"")
+        self.btn_switch.setObjectName("btn_switch")
+        self.horizontalLayout_2.addWidget(self.btn_switch)
+        self.gridLayout_5.addLayout(self.horizontalLayout_2, 4, 0, 1, 1)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
-        spacerItem5 = QtWidgets.QSpacerItem(20, 300, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.horizontalLayout.addItem(spacerItem5)
+        spacerItem3 = QtWidgets.QSpacerItem(20, 300, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.horizontalLayout.addItem(spacerItem3)
         self.gridLayout_5.addLayout(self.horizontalLayout, 6, 0, 1, 1)
-        self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit.setEnabled(True)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.lineEdit.sizePolicy().hasHeightForWidth())
-        self.lineEdit.setSizePolicy(sizePolicy)
-        self.lineEdit.setObjectName("lineEdit")
-        self.gridLayout_5.addWidget(self.lineEdit, 4, 0, 1, 1)
         self.gridLayout_3.addLayout(self.gridLayout_5, 0, 2, 1, 1)
+        self.verticalLayout = QtWidgets.QVBoxLayout()
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        font.setBold(True)
+        self.label.setFont(font)
+        self.label.setStyleSheet("QLabel {\n"
+"    color: white;\n"
+"}")
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
+        self.label.setObjectName("label")
+        self.verticalLayout.addWidget(self.label)
+        self.graph_orignal = PlotWidget(self.centralwidget)
+        self.graph_orignal.setStyleSheet("")
+        self.graph_orignal.setObjectName("graph_orignal")
+        self.verticalLayout.addWidget(self.graph_orignal)
+        spacerItem4 = QtWidgets.QSpacerItem(20, 1, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        self.verticalLayout.addItem(spacerItem4)
+        self.label_2 = QtWidgets.QLabel(self.centralwidget)
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        font.setBold(True)
+        self.label_2.setFont(font)
+        self.label_2.setStyleSheet("QLabel {\n"
+"    color: white;\n"
+"}")
+        self.label_2.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_2.setObjectName("label_2")
+        self.verticalLayout.addWidget(self.label_2)
+        self.graph_recons = PlotWidget(self.centralwidget)
+        self.graph_recons.setStyleSheet("QPlotGraph {\n"
+"  background-color: #3498db;\n"
+"  color: white;\n"
+"  border: none;\n"
+"  padding: 10px 20px;\n"
+"  text-align: center;\n"
+"  text-decoration: none;\n"
+"  font-size: 16px;\n"
+"  margin: 4px 2px;\n"
+"  cursor: pointer;\n"
+"  border-radius: 5px;\n"
+"}\n"
+"\n"
+"QPlotGraph:hover {\n"
+"  background-color: #192639;\n"
+"  color: #eee;\n"
+"}\n"
+"")
+        self.graph_recons.setObjectName("graph_recons")
+        self.verticalLayout.addWidget(self.graph_recons)
+        spacerItem5 = QtWidgets.QSpacerItem(20, 1, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        self.verticalLayout.addItem(spacerItem5)
+        self.label_3 = QtWidgets.QLabel(self.centralwidget)
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        font.setBold(True)
+        self.label_3.setFont(font)
+        self.label_3.setStyleSheet("QLabel {\n"
+"    color: white;\n"
+"}")
+        self.label_3.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_3.setObjectName("label_3")
+        self.verticalLayout.addWidget(self.label_3)
+        self.graph_error = PlotWidget(self.centralwidget)
+        self.graph_error.setObjectName("graph_error")
+        self.verticalLayout.addWidget(self.graph_error)
+        self.gridLayout_3.addLayout(self.verticalLayout, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1573, 26))
@@ -458,9 +460,6 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "Original signal"))
-        self.label_2.setText(_translate("MainWindow", "Reconstructed signal"))
-        self.label_3.setText(_translate("MainWindow", "Calculated Error "))
         self.btn_clear.setText(_translate("MainWindow", "Clear graphs"))
         self.label_7.setText(_translate("MainWindow", "SNR level"))
         self.btn_import.setText(_translate("MainWindow", "Import"))
@@ -476,8 +475,12 @@ class Ui_MainWindow(object):
         self.label_8.setText(_translate("MainWindow", "Adjust phase"))
         self.groupBox_3.setTitle(_translate("MainWindow", "Mixed signals"))
         self.btn_remove.setText(_translate("MainWindow", "Remove"))
-        self.btn_mixed_plot.setText(_translate("MainWindow", "plot"))
-        self.lbl_samp_freq.setText(_translate("MainWindow", "1fmax"))
+        self.btn_mixed_plot.setText(_translate("MainWindow", "Plot"))
         self.label_4.setText(_translate("MainWindow", "Sampling range"))
+        self.lbl_samp_freq.setText(_translate("MainWindow", "1fmax"))
+        self.btn_switch.setText(_translate("MainWindow", "Switch to hz"))
+        self.label.setText(_translate("MainWindow", "Original signal"))
+        self.label_2.setText(_translate("MainWindow", "Reconstructed signal"))
+        self.label_3.setText(_translate("MainWindow", "Calculated Error "))
         self.menuFile.setTitle(_translate("MainWindow", "File"))
 from pyqtgraph import PlotWidget
