@@ -68,7 +68,6 @@ class Ui_MainWindow(object):
         self.btn_clear.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setPointSize(-1)
-        font.setBold(True)
         font.setUnderline(False)
         font.setStrikeOut(False)
         self.btn_clear.setFont(font)
@@ -82,6 +81,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setBold(True)
+        font.setWeight(75)
         self.label_7.setFont(font)
         self.label_7.setStyleSheet("QLabel {\n"
 "    color: white;\n"
@@ -106,7 +106,6 @@ class Ui_MainWindow(object):
         self.btn_import = QtWidgets.QPushButton(self.centralwidget)
         font = QtGui.QFont()
         font.setPointSize(-1)
-        font.setBold(True)
         font.setUnderline(False)
         font.setStrikeOut(False)
         self.btn_import.setFont(font)
@@ -125,6 +124,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setBold(True)
+        font.setWeight(75)
         self.groupBox.setFont(font)
         self.groupBox.setStyleSheet("QGroupBox {\n"
 "    border: 2px solid;\n"
@@ -157,6 +157,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(8)
         font.setBold(True)
+        font.setWeight(75)
         self.label_6.setFont(font)
         self.label_6.setObjectName("label_6")
         self.gridLayout_4.addWidget(self.label_6, 1, 0, 1, 1)
@@ -170,6 +171,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(8)
         font.setBold(True)
+        font.setWeight(75)
         self.label_5.setFont(font)
         self.label_5.setStyleSheet("")
         self.label_5.setObjectName("label_5")
@@ -182,7 +184,6 @@ class Ui_MainWindow(object):
         self.btn_add_comp.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setPointSize(-1)
-        font.setBold(True)
         font.setUnderline(False)
         font.setStrikeOut(False)
         self.btn_add_comp.setFont(font)
@@ -204,6 +205,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setBold(True)
+        font.setWeight(75)
         self.label_9.setFont(font)
         self.label_9.setStyleSheet("color:rgb(255, 255, 255);\n"
 "border: 2px solid  rgb(255, 170, 0);\n"
@@ -228,6 +230,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(8)
         font.setBold(True)
+        font.setWeight(75)
         self.label_8.setFont(font)
         self.label_8.setObjectName("label_8")
         self.gridLayout_4.addWidget(self.label_8, 2, 0, 1, 1)
@@ -270,7 +273,6 @@ class Ui_MainWindow(object):
         self.btn_remove = QtWidgets.QPushButton(self.groupBox_3)
         font = QtGui.QFont()
         font.setPointSize(-1)
-        font.setBold(True)
         font.setUnderline(False)
         font.setStrikeOut(False)
         self.btn_remove.setFont(font)
@@ -280,7 +282,6 @@ class Ui_MainWindow(object):
         self.btn_mixed_plot = QtWidgets.QPushButton(self.groupBox_3)
         font = QtGui.QFont()
         font.setPointSize(-1)
-        font.setBold(True)
         font.setUnderline(False)
         font.setStrikeOut(False)
         self.btn_mixed_plot.setFont(font)
@@ -300,6 +301,7 @@ class Ui_MainWindow(object):
         font.setPointSize(11)
         font.setBold(True)
         font.setUnderline(False)
+        font.setWeight(75)
         self.label_4.setFont(font)
         self.label_4.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.label_4.setStyleSheet("QLabel {\n"
@@ -348,7 +350,6 @@ class Ui_MainWindow(object):
         self.btn_switch = QtWidgets.QPushButton(self.centralwidget)
         font = QtGui.QFont()
         font.setPointSize(-1)
-        font.setBold(True)
         font.setUnderline(False)
         font.setStrikeOut(False)
         self.btn_switch.setFont(font)
@@ -369,6 +370,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(12)
         font.setBold(True)
+        font.setWeight(75)
         self.label.setFont(font)
         self.label.setStyleSheet("QLabel {\n"
 "    color: white;\n"
@@ -386,6 +388,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(12)
         font.setBold(True)
+        font.setWeight(75)
         self.label_2.setFont(font)
         self.label_2.setStyleSheet("QLabel {\n"
 "    color: white;\n"
@@ -420,6 +423,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(12)
         font.setBold(True)
+        font.setWeight(75)
         self.label_3.setFont(font)
         self.label_3.setStyleSheet("QLabel {\n"
 "    color: white;\n"
@@ -470,8 +474,8 @@ class Ui_MainWindow(object):
         self.label_9.setText(_translate("MainWindow", "Ready templates"))
         self.comb_bx_examp.setItemText(0, _translate("MainWindow", "choose example"))
         self.comb_bx_examp.setItemText(1, _translate("MainWindow", "example 1 : sin(2πx (6) ) +sin(2πx(2))"))
-        self.comb_bx_examp.setItemText(2, _translate("MainWindow", "example 2 : sin(2πx (5)) + 2sin(2πx(3))"))
-        self.comb_bx_examp.setItemText(3, _translate("MainWindow", "example 1 : 2sin(2πx (4) ) + sin(2πx(1)) + sin(2πx(3)) "))
+        self.comb_bx_examp.setItemText(2, _translate("MainWindow", "example 2 : sin(2πx (5)) + sin(2πx(3))"))
+        self.comb_bx_examp.setItemText(3, _translate("MainWindow", "example 3 : sin(2πx (6) ) + sin(2πx(12))  "))
         self.label_8.setText(_translate("MainWindow", "Adjust phase"))
         self.groupBox_3.setTitle(_translate("MainWindow", "Mixed signals"))
         self.btn_remove.setText(_translate("MainWindow", "Remove"))

@@ -95,7 +95,6 @@ background-color: #676767;
             <property name="font">
              <font>
               <pointsize>-1</pointsize>
-              <bold>true</bold>
               <underline>false</underline>
               <strikeout>false</strikeout>
              </font>
@@ -122,6 +121,7 @@ background-color: #676767;
             <property name="font">
              <font>
               <pointsize>10</pointsize>
+              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -192,7 +192,6 @@ background-color: #676767;
             <property name="font">
              <font>
               <pointsize>-1</pointsize>
-              <bold>true</bold>
               <underline>false</underline>
               <strikeout>false</strikeout>
              </font>
@@ -227,6 +226,7 @@ background-color: #676767;
           <property name="font">
            <font>
             <pointsize>10</pointsize>
+            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -265,6 +265,7 @@ QLabel {
              <property name="font">
               <font>
                <pointsize>8</pointsize>
+               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -284,6 +285,7 @@ QLabel {
              <property name="font">
               <font>
                <pointsize>8</pointsize>
+               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -306,7 +308,6 @@ QLabel {
              <property name="font">
               <font>
                <pointsize>-1</pointsize>
-               <bold>true</bold>
                <underline>false</underline>
                <strikeout>false</strikeout>
               </font>
@@ -342,6 +343,7 @@ QLabel {
              <property name="font">
               <font>
                <pointsize>10</pointsize>
+               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -380,12 +382,12 @@ background-color:rgb(25, 117, 255);
              </item>
              <item>
               <property name="text">
-               <string>example 2 : sin(2πx (5)) + 2sin(2πx(3))</string>
+               <string>example 2 : sin(2πx (5)) + sin(2πx(3))</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>example 1 : 2sin(2πx (4) ) + sin(2πx(1)) + sin(2πx(3)) </string>
+               <string>example 3 : sin(2πx (6) ) + sin(2πx(12))  </string>
               </property>
              </item>
             </widget>
@@ -395,6 +397,7 @@ background-color:rgb(25, 117, 255);
              <property name="font">
               <font>
                <pointsize>8</pointsize>
+               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -450,7 +453,6 @@ QLabel {
                 <property name="font">
                  <font>
                   <pointsize>-1</pointsize>
-                  <bold>true</bold>
                   <underline>false</underline>
                   <strikeout>false</strikeout>
                  </font>
@@ -468,7 +470,6 @@ QLabel {
                 <property name="font">
                  <font>
                   <pointsize>-1</pointsize>
-                  <bold>true</bold>
                   <underline>false</underline>
                   <strikeout>false</strikeout>
                  </font>
@@ -500,6 +501,7 @@ QLabel {
         <property name="font">
          <font>
           <pointsize>11</pointsize>
+          <weight>75</weight>
           <bold>true</bold>
           <underline>false</underline>
          </font>
@@ -574,7 +576,6 @@ QSlider::groove {
           <property name="font">
            <font>
             <pointsize>-1</pointsize>
-            <bold>true</bold>
             <underline>false</underline>
             <strikeout>false</strikeout>
            </font>
@@ -616,6 +617,7 @@ QSlider::groove {
         <property name="font">
          <font>
           <pointsize>12</pointsize>
+          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -660,6 +662,7 @@ QSlider::groove {
         <property name="font">
          <font>
           <pointsize>12</pointsize>
+          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -721,6 +724,7 @@ QPlotGraph:hover {
         <property name="font">
          <font>
           <pointsize>12</pointsize>
+          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
