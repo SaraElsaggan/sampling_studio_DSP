@@ -1,6 +1,5 @@
 import signal
 import neurokit2 as nk
-# import interpolate
 from scipy.interpolate import interp1d
 from scipy.signal import resample
 from scipy.interpolate import interp1d
@@ -27,6 +26,8 @@ class MyMainWindow(QMainWindow):
         self.time = np.linspace(0, 2 , 1000)
         self.signals_components = []
         self.plotted_orignal_signal = None
+        self.error = None
+        self.rec_data_line = None
         self.orignal_signal = None
         self.max_freq = None
         self.xData = None
@@ -56,7 +57,7 @@ class MyMainWindow(QMainWindow):
         self.example_1 = np.sin(2 * np.pi * 15  * self.time ) + np.sin(2 * np.pi * 30 * self.time)
         self.example_2 = np.sin(2 * np.pi * 10  * self.time ) +2 * np.sin(2 * np.pi * 20  * self.time)
         self.example_3 =2 *np.sin(2 * np.pi * 30  * self.time ) +  np.sin(2 * np.pi * 60 * self.time)
-        rec_data_line = []
+        
     def clear_graphs(self):
         self.ui.graph_error.clear()
         self.ui.graph_recons.clear()
@@ -68,43 +69,24 @@ class MyMainWindow(QMainWindow):
         self.is_hz = False
         self.sampling()
         
-    # def load_signal(self):
-    #     #get the data file and read it
-    #     file_path  , _ = QFileDialog.getOpenFileName( self , "open file", "" ,"(*.csv) ")
-    #     data = pd.read_csv(file_path)
-    #     self.yData = data.values[:, 1]
-    #     self.xData = data.values[:, 0]
-    #     ecg_results = nk.ecg_process(self.yData, sampling_rate=125)  # Replace 1000 with your actual sampling rate
-    #     self.plotted_orignal_signal = self.ui.graph_orignal.plotItem.plot(self.xData , self.yData , pen="#ffffff")
-        self.ui.graph_orignal.plotItem.vb.setLimits(xMin= np.min(self.xData), xMax=max(self.xData), yMin=min(self.yData) , yMax=max(self.yData))
-    #     self.isloaded = True
-    #     self.ismixed = False
-    #     self.ui.horizontalSlider.setValue(1)
-    #     #sample the uploaded signal
-    #     self.max_freq = 62.5
-    #     self.sampling()
     def load_signal(self):
         # Get the data file and read it
         file_path, _ = QFileDialog.getOpenFileName(self, "Open file", "", "(*.csv)")
         data = pd.read_csv(file_path)
-        
         # Read only the first 900 data points
         num_points_to_read = 900
         self.yData = data.values[:num_points_to_read, 1]
         self.xData = data.values[:num_points_to_read, 0]
-        
         ecg_results = nk.ecg_process(self.yData, sampling_rate=125)  # Replace 1000 with your actual sampling rate
         self.plotted_orignal_signal = self.ui.graph_orignal.plotItem.plot(self.xData, self.yData, pen="#ffffff")
-        # self.ui.graph_orignal.plotItem.vb.setLimits(xMin=np.min(self.xData), xMax=max(self.xData),
-                                                    # yMin=min(self.yData), yMax=max(self.yData))
+        self.ui.graph_orignal.plotItem.vb.setLimits(xMin=np.min(self.xData), xMax=max(self.xData),
+                                                     yMin=min(self.yData), yMax=max(self.yData))
         self.isloaded = True
         self.ismixed = False
         self.ui.horizontalSlider.setValue(1)
-        
         # Sample the uploaded signal
         self.max_freq = 62.5
         self.sampling()
-
 
     def mix_components(self):
         '''
@@ -172,10 +154,10 @@ class MyMainWindow(QMainWindow):
             self.max_freq = 30
             self.mixed_signal = self.example_1
         elif self.ui.comb_bx_examp.currentIndex() == 2:
-            self.max_freq = 40
+            self.max_freq = 20
             self.mixed_signal = self.example_2
         elif self.ui.comb_bx_examp.currentIndex() == 3:
-            self.max_freq = 120
+            self.max_freq = 60
             self.mixed_signal = self.example_3
         self.yData = self.mixed_signal
         self.plot_sine_signal(self.mixed_signal)
@@ -192,11 +174,11 @@ class MyMainWindow(QMainWindow):
         self.ui.graph_orignal.clear()
         self.plotted_orignal_signal = self.ui.graph_orignal.plot( self.time , signal) 
         #set limits of the graph
-        # self.edit_graphs()
         min_x , max_x , min_y , max_y = self.min_max(self.plotted_orignal_signal)
-        # self.ui.graph_orignal.plotItem.vb.setLimits( xMin=min_x , xMax=max_x, yMin=min_y , yMax=max_y)  
-        self.ui.graph_orignal.getViewBox().autoRange()
+        self.ui.graph_orignal.plotItem.vb.setLimits( xMin=min_x , xMax=max_x, yMin=min_y , yMax=max_y)  
         
+        self.ui.graph_orignal.getViewBox().autoRange()
+        self.edit_graphs()
         self.sampling()
 
     def min_max(self, graph):
@@ -211,22 +193,20 @@ class MyMainWindow(QMainWindow):
         
     def edit_graphs(self):
         min_x , max_x , min_y , max_y = self.min_max(self.plotted_orignal_signal)
-        # self.ui.graph_orignal.plotItem.vb.setLimits( xMin=min_x , xMax=max_x, yMin=min_y , yMax=max_y) 
-        # min_x , max_x , min_y , max_y = self.min_max(self.rec_data_line)
-        # self.ui.graph_recons.plotItem.vb.setLimits( xMin=min_x , xMax=max_x, yMin=min_y , yMax=max_y)
-        min_x , max_x , min_y , max_y = self.min_max(self.error)
-        # self.ui.graph_error.plotItem.vb.setLimits( xMin=min_x , xMax=max_x, yMin=min_y - 2 , yMax=max_y + 2) 
+        self.ui.graph_orignal.plotItem.vb.setLimits( xMin=min_x , xMax=max_x, yMin=min_y , yMax=max_y) 
+        if self.rec_data_line:
+            self.ui.graph_recons.plotItem.vb.setLimits( xMin=min_x , xMax=max_x, yMin=min_y , yMax=max_y)
+        if self.error:
+            min_x , max_x , min_y , max_y = self.min_max(self.error)
+            self.ui.graph_error.plotItem.vb.setLimits( xMin=min_x , xMax=max_x, yMin=min_y - 2 , yMax=max_y + 2) 
         self.ui.graph_orignal.getViewBox().autoRange()
         self.ui.graph_error.getViewBox().autoRange()
-        self.ui.graph_recons.getViewBox().autoRange()
+        self.ui.graph_recons.setYRange(min_y , max_y)
 
     def plot_difference_between_graphs(self):
         self.ui.graph_error.clear()
-        # x_data_1, y_data_1 = self-.ui.graph_orignal.plotItem.curves[0].getData()
         x_data_2, y_data_2 = self.ui.graph_recons.plotItem.curves[0].getData()
-        # difference = np.array(self.mixed_signal) - np.array(y_data_2)
         difference = np.array(self.yData) - np.array(y_data_2)
-        # difference = np.array(y_data_1) - np.array(y_data_2)
         self.error = self.ui.graph_error.plot(x_data_2, difference, pen='r')  
         self.edit_graphs()
         
@@ -270,31 +250,13 @@ class MyMainWindow(QMainWindow):
         self.ui.graph_orignal.clear()
         
         if self.isloaded:
-            # if self.ui.dial_noise.value() == 0:
-            #     print("help")
-            #     self.y_with_noise = self.yData
-            # self.y_with_noise = [value + np.random.uniform(0, snr_level , len(self.time)) for value in self.yData]
-            # else:
             print(f"snr{snr_level}")
             noise = np.random.normal(0, snr_level*100, len(self.yData))
             self.y_with_noise = self.yData + noise
             
             self.plotted_orignal_signal = self.ui.graph_orignal.plot(self.xData  ,self.yData  )
-            # self.plotted_orignal_signal = self.ui.graph_orignal.plot(self.xData  ,self.y_with_noise  )
         
         if self.ismixed:
-            
-            # self.y_with_noise = [value + np.random.uniform(-snr_level, snr_level) for value in self.yData]
-            
-            # self.plotted_orignal_signal = self.ui.graph_orignal.plot(self.time  ,self.y_with_noise  )
-            # noise = np.random.normal(0, snr_level, len(self.time))
-            # self.mixed_signal_with_noise = self.mixed_signal + noise
-
-            # if self.ui.dial_noise.value() == 0:
-            #     print("help")
-            #     self.y_with_noise = self.yData
-            # self.y_with_noise = [value + np.random.normal(0, snr_level , len(self.time)) for value in self.yData]
-            # else:
             noise = np.random.normal(0, snr_level, len(self.mixed_signal))
             self.mixed_signal_with_noise = self.mixed_signal + noise
             self.plotted_orignal_signal = self.ui.graph_orignal.plot(self.time , self.mixed_signal_with_noise )
@@ -335,30 +297,15 @@ class MyMainWindow(QMainWindow):
             
             print(f"samplind {sampling_frequency}")
             
-            
-            # sampled_signal_x = np.linspace(min(x_data), max(x_data), num_samples ,endpoint=False)
-            
-            sampled_signal_x = np.arange(x_data[0], x_data[-1], sampling_interval)
-            # sampled_signal_y , _ = resample(y_data, sampling_frequency ,x_data )
+            sampled_signal_x = np.arange(x_data[0], x_data[-1], sampling_interval/2)
             sampled_signal_y = np.interp(sampled_signal_x, x_data, y_data)
             
             print("Shapes before resampling:", x_data.shape, y_data.shape)
             print("Shapes after resampling:", sampled_signal_x.shape, sampled_signal_y.shape)
-            # print("sss" , int(sampling_frequency))
-            # sampled_signal_y , _ = resample(y_data, int(sampling_frequency) ,x_data )
-            # print(len(sampled_signal_y))
-            # print(len(_))
-            
-            # sampled_signal_x = np.linspace(x_data[0], x_data[-1], num_samples, endpoint=False)
-            
-
-            # f = interp1d(x_data, y_data, kind='linear')
-            # sampled_signal_y = f(sampled_signal_x)
-            
             self.ui.graph_orignal.plot(sampled_signal_x, sampled_signal_y ,  pen=None, symbol='o', symbolSize=7, symbolPen='b', symbolBrush='b')
             reconstructed_data = self.sinc_interp(sampled_signal_x , sampled_signal_y , x_data)
             
-            rec_data_line  = self.ui.graph_recons.plot(x_data , reconstructed_data ,pen='g')
+            self.rec_data_line  = self.ui.graph_recons.plot(x_data , reconstructed_data ,pen='g')
 
 
             
@@ -375,185 +322,14 @@ class MyMainWindow(QMainWindow):
             
             sampling_interval = 1 / sampling_frequency
             num_samples = int((x_data[-1] - x_data[0]) / sampling_interval)
-            
-            
-            # sampled_y , _ = resample(y_data, num_samples , x_data)
-            # sampled_x = np.linspace(x_data[0], x_data[-1], num_samples,  endpoint=False)
             sampled_x = np.arange(x_data[0], x_data[-1], sampling_interval)
-
             sampled_y = self.sinc_interp(x_data, y_data, sampled_x)
-            # sampled_y = np.interp(sampled_x, x_data, y_data)
-            # self.ui.graph_orignal.plot(sampled_x, sampled_y ,  pen=None, symbol='o', symbolSize=7, symbolPen='b', symbolBrush='b')
-            # sampled_y = np.interp(sampled_x, self.xData, self.yData)
-            # f = interp1d(x_data, y_data, kind='linear')
-            # sampled_y = f(sampled_x)
-
             orginal_signal = self.ui.graph_orignal.plot(self.plotted_orignal_signal.getData()[0] , self.plotted_orignal_signal.getData()[1] ) # dont forget to plot the orignal not only the mixed
-        
-            
-            
             reconstructed_data = self.sinc_interp(sampled_x , sampled_y , x_data)
             self.rec_data_line = self.ui.graph_recons.plot(x_data , reconstructed_data ,pen='g')
-
-           
-
            
         self.plot_difference_between_graphs()
         self.edit_graphs()
-
-    
-    # def sampling(self):
-    #     print(self.ui.horizontalSlider.value())
-    #     self.ui.graph_orignal.clear()
-    #     self.ui.graph_error.clear()
-    #     self.ui.graph_recons.clear()
-    #     if self.ismixed:    
-    #         sampling_frequency = self.get_sampling_freq()
-    #         self.ui.graph_orignal.plot(self.plotted_orignal_signal.getData()[0] , self.plotted_orignal_signal.getData()[1] ) 
-    #         x_data, y_data = self.plotted_orignal_signal.getData()  # Get the data from the PlotDataItem
-    #         sampling_interval = 1 / sampling_frequency
-    #         num_samples = int((x_data[-1] - x_data[0]) / sampling_interval)
-    #         print(f"samplind {sampling_frequency}")
-            
-    #         sampled_signal_x = np.arange(x_data[0], x_data[-1], sampling_interval/2)
-    #         print({"sampled_signal_x"})
-
-    #         print(sampled_signal_x)
-    #         sampled_signal_y = np.interp(sampled_signal_x, x_data, y_data)
-    #         print("Shapes before resampling:", x_data.shape, y_data.shape)
-    #         print("Shapes after resampling:", sampled_signal_x.shape, sampled_signal_y.shape)
-    #         if self.is_noise:
-    #            if len(sampled_signal_x) != len(self.y_with_noise):
-    #             # Resize self.y_with_noise to match the length of sampled_signal_x
-    #                 self.y_with_noise = np.resize(self.y_with_noise, len(sampled_signal_x))
-               
-    #            self.plotted_orignal_signal = self.ui.graph_orignal.plot(self.time , self.y_with_noise )
-
-    #            reconstructed_data = self.sinc_interp(sampled_signal_x , self.y_with_noise , x_data)
-    #            self.rec_data_line  = self.ui.graph_recons.plot(x_data , reconstructed_data ,pen='g')
-
-    #         else:
-    #             self.ui.graph_orignal.plot(sampled_signal_x, sampled_signal_y ,  pen=None, symbol='o', symbolSize=7, symbolPen='b', symbolBrush='b')
-    #             reconstructed_data = self.sinc_interp(sampled_signal_x , sampled_signal_y , x_data)
-    #             self.rec_data_line  = self.ui.graph_recons.plot(x_data , reconstructed_data ,pen='g')
-
-
-
-
-
-
-
-    #     if self.isloaded:
-    #         # Ensure that x and y are NumPy arrays
-    #         x_data, y_data = self.plotted_orignal_signal.getData()  # Get the data from the PlotDataItem
-    #         x = np.array(x_data)
-    #         y = np.array(y_data)
-    #         self.max_freq = (1/(x_data[1] - x_data[0]))/2
-    #         sampling_frequency = self.get_sampling_freq()
-    #         print(sampling_frequency)
-    #         sampling_interval = 1 / sampling_frequency
-    #         num_samples = int((x_data[-1] - x_data[0]) / sampling_interval)
-    #         sampled_x = np.arange(x_data[0], x_data[-1], sampling_interval)
-    #         # print(sampled_x.shape)
-    #         sampled_y = self.sinc_interp(x_data, y_data, sampled_x)
-    #         # orginal_signal = self.ui.graph_orignal.plot(self.plotted_orignal_signal.getData()[0] , self.plotted_orignal_signal.getData()[1] ) # dont forget to plot the orignal not only the mixed
-    #         # reconstructed_data = self.sinc_interp(sampled_x , sampled_y , x_data)
-    #         # self.rec_data_line = self.ui.graph_recons.plot(x_data , reconstructed_data ,pen='g')
-    #         if self.is_noise:
-    #             if len(sampled_x) != len(self.y_with_noise):
-    #             # Resize self.y_with_noise to match the length of sampled_x
-    #                 self.y_with_noise = np.resize(self.y_with_noise, len(sampled_x))
-    #             self.plotted_orignal_signal = self.ui.graph_orignal.plot(self.time[:len(self.y_with_noise)] , self.y_with_noise )
-
-    #             reconstructed_data = self.sinc_interp(sampled_x , self.y_with_noise  , x_data)
-    #             self.rec_data_line  = self.ui.graph_recons.plot(x_data , reconstructed_data ,pen='g')
-
-
-    #         else:
-    #             #self.ui.graph_orignal.plot(sampled_x, sampled_y ,  pen=None, symbol='o', symbolSize=7, symbolPen='b', symbolBrush='b')
-    #             orginal_signal = self.ui.graph_orignal.plot(self.plotted_orignal_signal.getData()[0] , self.plotted_orignal_signal.getData()[1] ) # dont forget to plot the orignal not only the mixed
-
-    #             reconstructed_data = self.sinc_interp(sampled_x , sampled_y , x_data)
-    #             self.rec_data_line  = self.ui.graph_recons.plot(x_data , reconstructed_data ,pen='g')
-
-            
-    #     self.plot_difference_between_graphs()
-    #     self.edit_graphs()
-    # #######################33
-    ##########################
-    # def sampling(self):
-    #     print(self.ui.horizontalSlider.value())
-        
-    #     self.ui.graph_orignal.clear()
-    #     self.ui.graph_error.clear()
-    #     self.ui.graph_recons.clear()
-        
-    #     if self.ismixed:    
-            
-    #         sampling_frequency = self.get_sampling_freq()
-
-    #         self.ui.graph_orignal.plot(self.plotted_orignal_signal.getData()[0] , self.plotted_orignal_signal.getData()[1] ) 
-    #         x_data, y_data = self.plotted_orignal_signal.getData()  # Get the data from the PlotDataItem
-
-
-    #         sampling_interval = 1 / sampling_frequency
-    #         num_samples = int((x_data[-1] - x_data[0]) / sampling_interval)
-            
-    #         print(f"samplind {sampling_frequency}")
-            
-            
-            
-    #         sampled_signal_x = np.arange(x_data[0], x_data[-1], sampling_interval)
-    #         sampled_signal_y = np.interp(sampled_signal_x, x_data, y_data)
-            
-    #         print("Shapes before resampling:", x_data.shape, y_data.shape)
-    #         print("Shapes after resampling:", sampled_signal_x.shape, sampled_signal_y.shape)
-          
-            
-    #         self.ui.graph_orignal.plot(sampled_signal_x, sampled_signal_y ,  pen=None, symbol='o', symbolSize=7, symbolPen='b', symbolBrush='b')
-    #         reconstructed_data = self.sinc_interp(sampled_signal_x , sampled_signal_y , x_data)
-            
-    #         rec_data_line  = self.ui.graph_recons.plot(x_data , reconstructed_data ,pen='g')
-
-
-            
-    #     if self.isloaded:
-            
-    #         # Ensure that x and y are NumPy arrays
-    #         x_data, y_data = self.plotted_orignal_signal.getData()  # Get the data from the PlotDataItem
-    #         x = np.array(x_data)
-    #         y = np.array(y_data)
-    #         self.max_freq = (1/(x_data[1] - x_data[0]))/2
-    #         sampling_frequency = self.get_sampling_freq()
-
-    #         print(sampling_frequency)
-            
-    #         sampling_interval = 1 / sampling_frequency
-    #         num_samples = int((x_data[-1] - x_data[0]) / sampling_interval)
-            
-            
-         
-    #         sampled_x = np.arange(x_data[0], x_data[-1], sampling_interval)
-
-    #         sampled_y = self.sinc_interp(x_data, y_data, sampled_x)
-           
-
-    #         orginal_signal = self.ui.graph_orignal.plot(self.plotted_orignal_signal.getData()[0] , self.plotted_orignal_signal.getData()[1] ) # dont forget to plot the orignal not only the mixed
-        
-            
-            
-    #         reconstructed_data = self.sinc_interp(sampled_x , sampled_y , x_data)
-    #         self.rec_data_line = self.ui.graph_recons.plot(x_data , reconstructed_data ,pen='g')
-
-           
-
-           
-    #     self.plot_difference_between_graphs()
-    #     self.edit_graphs()
-
-###########################################3333
-###############################################3333
-    
 
     def sinc_interp(self, sampled_x, sampled_y, xData):
         
